@@ -21,7 +21,6 @@ public class DirectionPointer : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             moving = false;
-            Debug.Log(this.transform.position);
         }
         if (this.transform.position.x > 6.45 || this.transform.position.x < -6.45)
         {

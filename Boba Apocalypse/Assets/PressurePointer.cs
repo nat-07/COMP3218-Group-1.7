@@ -7,7 +7,9 @@ public class PressurePointer : MonoBehaviour
 {
     [SerializeField] public float pressureSpeed;
     Boolean moving;
-    Boolean finalStop;
+    public static Boolean finalStop;
+    Boolean timerReached = false;
+    float timer = 0;
     private void Start()
     {
         moving = false;
@@ -19,13 +21,20 @@ public class PressurePointer : MonoBehaviour
     {
         if (!DirectionPointer.moving && !finalStop)
         {
-            moving = true;
+            if (!timerReached)
+            {
+                timer += Time.deltaTime;
+            }
+            if (!timerReached && timer > 1)
+            {
+                moving = true;
+                timerReached = true;
+            }
         }
-        if (Input.GetKey(KeyCode.Space) && moving)
+        if (Input.GetKey(KeyCode.Space) && moving && timerReached)
         {
             moving = false;
             finalStop = true;
-            Debug.Log(this.transform.position);
         }
         if (this.transform.position.y > 4.22 || this.transform.position.y < -4.22)
         {
