@@ -6,7 +6,8 @@ using DG.Tweening;
 
 public class MoveDownKey : MonoBehaviour
 {
-    public GameObject[] objectsToTrack; // assign in Inspector
+    public GameObject[] objectsToTrack;
+    public GameObject[] otherObjectsToTrack;// assign in Inspector
     private Vector3[] initialPositions;
     public float distance = 20f;
     public float duration = 2f;
@@ -15,7 +16,8 @@ public class MoveDownKey : MonoBehaviour
 {
     initialPositions = new Vector3[objectsToTrack.Length];
     for (int i = 0; i < objectsToTrack.Length; i++)
-        initialPositions[i] = objectsToTrack[i].transform.position; // store initial positions once
+        initialPositions[i] = objectsToTrack[i].transform.position;
+        
 }
 
     void Update()
@@ -35,6 +37,7 @@ public class MoveDownKey : MonoBehaviour
     seq.Append(obj.transform.DOMove(peakPos, duration * 0.2f).SetEase(Ease.OutQuad));
     seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
 }
+
         }
     
         // Example: press R to reset to initial positions

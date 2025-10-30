@@ -5,6 +5,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+
 public class ChangeCup : MonoBehaviour
 {
     Boolean ice;
@@ -21,7 +23,7 @@ public class ChangeCup : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = new Color(0.58f, 0.87f, 0.90f);
