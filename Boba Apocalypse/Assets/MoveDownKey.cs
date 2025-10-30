@@ -10,6 +10,7 @@ public class MoveDownKey : MonoBehaviour
     public GameObject[] otherObjectsToTrack;// assign in Inspector
     private Vector3[] initialPositions;
     private Vector3[] initialPositions2;
+    public GameObject[] stuffToAppear;
 
     public float distance = 20f;
     public float duration = 2f;
@@ -22,7 +23,10 @@ public class MoveDownKey : MonoBehaviour
     initialPositions2 = new Vector3[otherObjectsToTrack.Length];
     for (int i = 0; i < otherObjectsToTrack.Length; i++)
         initialPositions2[i] = otherObjectsToTrack[i].transform.position;
-   
+    for (int i = 0; i < stuffToAppear.Length; i++)
+        {
+            stuffToAppear[i].SetActive(false);
+        }
 }
 
     void Update()
@@ -52,7 +56,13 @@ public class MoveDownKey : MonoBehaviour
                 Sequence seq = DOTween.Sequence();
                 seq.Append(obj.transform.DOMove(peakPos, duration * 0.2f).SetEase(Ease.OutQuad));
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
+                
             }
+            for (int i = 0; i < stuffToAppear.Length; i++)
+            {
+                stuffToAppear[i].SetActive(true);
+            }
+
 
         }
     
@@ -79,6 +89,10 @@ public class MoveDownKey : MonoBehaviour
                 seq.Append(obj.transform.DOMove(peakPos, duration).SetEase(Ease.OutQuad));
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
                 }
+            for (int i = 0; i < stuffToAppear.Length; i++)
+            {
+                stuffToAppear[i].SetActive(false);
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ public class DirectionPointer : MonoBehaviour
     private void Start()
     {
         moving = true;
+
     }
 
     // Update is called once per frame
