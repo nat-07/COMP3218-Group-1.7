@@ -6,7 +6,7 @@ using UnityEngine;
 public class PressurePointer : MonoBehaviour
 {
     [SerializeField] public float pressureSpeed;
-    Boolean moving;
+    public static Boolean moving;
     public static Boolean finalStop;
     Boolean timerReached = false;
     float timer = 0;
@@ -25,7 +25,7 @@ public class PressurePointer : MonoBehaviour
             {
                 timer += Time.deltaTime;
             }
-            if (!timerReached && timer > 1)
+            if (!timerReached && timer > 0.2)
             {
                 moving = true;
                 timerReached = true;
@@ -35,6 +35,8 @@ public class PressurePointer : MonoBehaviour
         {
             moving = false;
             finalStop = true;
+            timer = 0;
+            timerReached = false;
         }
         if (this.transform.position.y > 4.22 || this.transform.position.y < -4.22)
         {

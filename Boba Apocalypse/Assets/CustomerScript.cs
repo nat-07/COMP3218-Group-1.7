@@ -87,8 +87,9 @@ public class CustomerScript : MonoBehaviour
             Color squareColor = collision.gameObject.GetComponent<Renderer>().material.color;
             Debug.Log("Collided with a square! Its color is: " + squareColor);
             Start();
-            
         }
 
     }
+
+
 }

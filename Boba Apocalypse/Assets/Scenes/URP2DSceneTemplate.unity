@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 1483515220}
   - component: {fileID: 1483515219}
   m_Layer: 0
-  m_Name: BobaCup (1)
+  m_Name: BobaCupThrow
   m_TagString: Square
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,6 +1430,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfc34dcfb2dbd943a02851ff5ad3ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToTrack:
+  - {fileID: 94477049}
+  - {fileID: 1201482710}
+  - {fileID: 869718747}
+  - {fileID: 1595810266}
+  - {fileID: 360446674}
+  otherObjectsToTrack:
+  - {fileID: 1953599537}
+  - {fileID: 2043470323}
+  - {fileID: 1607364604}
+  stuffToAppear:
+  - {fileID: 986428102}
+  - {fileID: 843892956}
+  duration: 2
   directionPointer: {fileID: 986428105}
   pressurePointer: {fileID: 1607364607}
 --- !u!212 &1483515217
