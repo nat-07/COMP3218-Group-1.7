@@ -19,11 +19,14 @@ public class BobaMovement : MonoBehaviour
     void Update()
     {
         if (PressurePointer.finalStop)
-        {
+        { 
             directionPointerX = directionPointer.position.x;
             directionPointerY = directionPointer.position.y;
             pressureSpeed = (pressurePointer.position.y + 4.22f) / 8.44f;
             float finalX = 0;
+            BoxCollider2D bc = GetComponent<BoxCollider2D>();
+            bc.isTrigger = false;
+            
             if (directionPointerX < 0)
             {
                 finalX = directionPointerX - Math.Abs(directionPointerY * (3 * pressureSpeed)) * (float)Math.Tan(0.174);
