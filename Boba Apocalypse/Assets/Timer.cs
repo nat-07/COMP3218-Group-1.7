@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] float remainingTime;
 
     void Update()
+
     {
         if (remainingTime > 0)
         {
