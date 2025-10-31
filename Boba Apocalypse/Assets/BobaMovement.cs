@@ -83,8 +83,13 @@ public class BobaMovement : MonoBehaviour
         for (int i = 0; i < objectsToTrack.Length; i++)
         {
             var obj = objectsToTrack[i];
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions[i], pressureSpeed * 30f * Time.deltaTime);
+            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions[i], 30f * Time.deltaTime);
         }
+        objectsToTrack[4].GetComponent<ChangeCup>().ResetBoba();
+        GetComponent<ChangeCup>().ResetBoba();
+        BoxCollider2D bc = GetComponent<BoxCollider2D>();
+        bc.isTrigger = true;
+
     }
 
     void MoveTableDown()
@@ -92,7 +97,7 @@ public class BobaMovement : MonoBehaviour
         for (int i = 0; i < otherObjectsToTrack.Length; i++)
         {
             var obj = otherObjectsToTrack[i];
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions2[i], pressureSpeed * 30f * Time.deltaTime);
+            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions2[i], 40f * Time.deltaTime);
         }
         for (int i = 0; i < stuffToAppear.Length; i++)
         {

@@ -20,17 +20,21 @@ public class ChangeCup : MonoBehaviour
         topping = false;
 
     }
+
+    public void ResetBoba()
+    {
+        ice = false;
+        milkTea = false;
+        topping = false;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = new Color(0.58f, 0.87f, 0.90f);
+            ice = false;
+    }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            sr.color = new Color(0.58f, 0.87f, 0.90f);
-            ice = false;
-            milkTea = false;
-            topping = false;
-        }
+    
+    
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -50,7 +54,7 @@ public class ChangeCup : MonoBehaviour
             }
             else if (topping)
             {
-                sr.color = new Color(1f, 0.5f, 0f);
+                sr.color = new Color(1.0f, 0.64f, 0.0f);
             }
 
             else
@@ -88,13 +92,13 @@ public class ChangeCup : MonoBehaviour
             Debug.Log("Detected Topping!");
             topping = true;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (milkTea && topping)
+            if (milkTea && ice)
             {
                 sr.color = Color.white;
             }
             else if (milkTea)
             {
-                new Color(1f, 0.5f, 0f);
+                sr.color = new Color(1.0f, 0.64f, 0.0f);
             }
             else if (ice)
             {
