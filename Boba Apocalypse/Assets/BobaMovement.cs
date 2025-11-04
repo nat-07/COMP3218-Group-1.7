@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using DG.Tweening;
+using UnityEditor;
 
 public class BobaMovement : MonoBehaviour
 {
     public GameObject[] objectsToTrack;
+    public GameObject BobaCup;
     public GameObject[] otherObjectsToTrack;// assign in Inspector
     public GameObject[] stuffToAppear;
     private Vector3[] initialPositions;
@@ -32,20 +34,25 @@ public class BobaMovement : MonoBehaviour
         {
             stuffToAppear[i].SetActive(false);
         }
+      
+      
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (PressurePointer.finalStop)
-        { 
+        {
             directionPointerX = directionPointer.position.x;
             directionPointerY = directionPointer.position.y;
             pressureSpeed = (pressurePointer.position.y + 4.22f) / 8.44f;
             float finalX = 0;
             BoxCollider2D bc = GetComponent<BoxCollider2D>();
             bc.isTrigger = false;
-            
+
             if (directionPointerX < 0)
             {
                 finalX = directionPointerX - Math.Abs(directionPointerY * (3 * pressureSpeed)) * (float)Math.Tan(0.174);
@@ -57,19 +64,25 @@ public class BobaMovement : MonoBehaviour
 
             float finalY = Math.Abs(directionPointerY * (3 * pressureSpeed) - directionPointerY);
             Vector3 finalPos = new Vector3(finalX, finalY, 0);
+            transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
+            if (Vector3.Distance(transform.position, finalPos) < 0.01f)
+            {
+
             StartCoroutine(MoveBobaAndReturn(finalPos));
+
+            }
+
         }
     }
-
-    IEnumerator MoveBobaAndReturn(Vector3 finalPos)
+     IEnumerator MoveBobaAndReturn(Vector3 finalPos)
     {
         transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
         yield return new WaitForSeconds(1);
         while (Vector3.Distance(transform.position, iniPos) > 0.01f)
         {
             transform.position = iniPos;
-            MoveTableUp();
-            MoveTableDown();
+            MoveTableUpTween();
+            MoveTableDownTween();
             yield return null;
         }
         yield return new WaitForSeconds(1);
@@ -77,32 +90,51 @@ public class BobaMovement : MonoBehaviour
         PressurePointer.moving = false;
         DirectionPointer.moving = true;
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+{
+   
 
-    void MoveTableUp()
+
+    MoveTableUpTween();
+    MoveTableDownTween();
+        
+    
+    transform.position = iniPos;
+    PressurePointer.finalStop = false;
+    PressurePointer.moving = false;
+    DirectionPointer.moving = true;
+
+    
+}
+    
+   public void MoveTableUpTween()
+{
+    if (objectsToTrack == null || objectsToTrack.Length == 0) return;
+
+    for (int i = 0; i < objectsToTrack.Length; i++)
     {
-        for (int i = 0; i < objectsToTrack.Length; i++)
-        {
-            var obj = objectsToTrack[i];
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions[i], 30f * Time.deltaTime);
-        }
-        objectsToTrack[4].GetComponent<ChangeCup>().ResetBoba();
-        GetComponent<ChangeCup>().ResetBoba();
-        BoxCollider2D bc = GetComponent<BoxCollider2D>();
-        bc.isTrigger = true;
-
+        if (objectsToTrack[i] != null)
+            objectsToTrack[i].transform.DOMove(initialPositions[i], 1f);
     }
 
-    void MoveTableDown()
+    if (objectsToTrack.Length > 4 && objectsToTrack[4] != null)
     {
-        for (int i = 0; i < otherObjectsToTrack.Length; i++)
-        {
-            var obj = otherObjectsToTrack[i];
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, initialPositions2[i], 40f * Time.deltaTime);
-        }
-        for (int i = 0; i < stuffToAppear.Length; i++)
-        {
-            stuffToAppear[i].SetActive(false);
-        }
+        var cup = objectsToTrack[4].GetComponent<ChangeCup>();
+        if (cup != null)
+            cup.ResetBoba();
     }
+}
+
+public void MoveTableDownTween()
+{
+    for (int i = 0; i < otherObjectsToTrack.Length; i++)
+        {
+        
+        otherObjectsToTrack[i].transform.DOMove(initialPositions2[i], 1f);
+    }
+    foreach (var obj in stuffToAppear)
+        obj.SetActive(false);
+}
 }
 

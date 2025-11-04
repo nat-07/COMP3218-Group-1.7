@@ -18,6 +18,7 @@ public class ChangeCup : MonoBehaviour
         ice = false;
         milkTea = false;
         topping = false;
+        
 
     }
 
@@ -27,8 +28,7 @@ public class ChangeCup : MonoBehaviour
         milkTea = false;
         topping = false;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            sr.color = new Color(0.58f, 0.87f, 0.90f);
-            ice = false;
+        sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite1");
     }
     
     void Update()
@@ -46,20 +46,20 @@ public class ChangeCup : MonoBehaviour
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (ice && topping)
             {
-                sr.color = Color.white;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite6");
             }
             else if (ice)
             {
-                sr.color = Color.magenta;
+               sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite7");
             }
             else if (topping)
             {
-                sr.color = new Color(1.0f, 0.64f, 0.0f);
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite8");
             }
 
             else
             {
-                sr.color = Color.red;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite5");
             }
 
         }
@@ -70,20 +70,20 @@ public class ChangeCup : MonoBehaviour
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (milkTea && topping)
             {
-                sr.color = Color.white;
+               sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite6");
             }
             else if (milkTea)
             {
-                sr.color = Color.magenta;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite7");
             }
             else if (topping)
             {
-                sr.color = Color.cyan;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite3");
             }
 
             else
             {
-                sr.color = Color.blue;
+               sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite4");
             }
 
         }
@@ -94,20 +94,20 @@ public class ChangeCup : MonoBehaviour
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (milkTea && ice)
             {
-                sr.color = Color.white;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite6");
             }
             else if (milkTea)
             {
-                sr.color = new Color(1.0f, 0.64f, 0.0f);
+               sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite8");
             }
             else if (ice)
             {
-                sr.color = Color.cyan;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite3");
             }
 
             else
             {
-                sr.color = Color.green;
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite2");
             }
             
         }

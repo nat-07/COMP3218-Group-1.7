@@ -7,6 +7,8 @@ using DG.Tweening;
 public class MoveDownKey : MonoBehaviour
 {
     public GameObject[] objectsToTrack;
+    public GameObject BobaCup;
+    public GameObject BobaCupThrow;
     public GameObject[] otherObjectsToTrack;// assign in Inspector
     private Vector3[] initialPositions;
     private Vector3[] initialPositions2;
@@ -34,6 +36,7 @@ public class MoveDownKey : MonoBehaviour
         // Example: press space to move all down relative to initial position
        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+           
             for (int i = 0; i < objectsToTrack.Length; i++)
             {
                 var obj = objectsToTrack[i];
@@ -56,12 +59,16 @@ public class MoveDownKey : MonoBehaviour
                 Sequence seq = DOTween.Sequence();
                 seq.Append(obj.transform.DOMove(peakPos, duration * 0.2f).SetEase(Ease.OutQuad));
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
-                
+
             }
             for (int i = 0; i < stuffToAppear.Length; i++)
             {
                 stuffToAppear[i].SetActive(true);
             }
+            
+             SpriteRenderer sourceRenderer = BobaCup.GetComponent<SpriteRenderer>();
+            SpriteRenderer myRenderer = BobaCupThrow.GetComponent<SpriteRenderer>();
+            myRenderer.sprite = sourceRenderer.sprite;
 
 
         }
