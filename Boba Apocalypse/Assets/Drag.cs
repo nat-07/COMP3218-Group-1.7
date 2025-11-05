@@ -24,7 +24,18 @@ public class Drag : MonoBehaviour
         }
     }
 
-    
+void OnMouseEnter ()
+{
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.material.color = Color.yellow;
+}
+
+void OnMouseExit ()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.material.color = Color.white;
+}
+
 
     private void OnMouseDown()
     {

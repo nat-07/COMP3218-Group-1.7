@@ -55,6 +55,7 @@ public class BobaMovement : MonoBehaviour
 
             if (directionPointerX < 0)
             {
+                Debug.Log($"Direction is: {directionPointerX}");
                 finalX = directionPointerX - Math.Abs(directionPointerY * (3 * pressureSpeed)) * (float)Math.Tan(0.174);
             }
             else

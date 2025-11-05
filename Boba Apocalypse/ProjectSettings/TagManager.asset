@@ -12,7 +12,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - hearts
   - Water
   - UI
   - Table
@@ -44,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: hearts
+    uniqueID: 3335339283
     locked: 0
   - name: Table
     uniqueID: 4001959463

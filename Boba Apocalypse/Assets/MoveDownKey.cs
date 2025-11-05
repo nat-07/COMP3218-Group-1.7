@@ -43,7 +43,7 @@ public class MoveDownKey : MonoBehaviour
 
                 Vector3 startPos = obj.transform.position; // current pos
                 Vector3 peakPos = startPos + Vector3.up * 0.2f;
-                Vector3 endPos = initialPositions[i] + Vector3.down * 3; // always relative to start
+                Vector3 endPos = initialPositions[i] + Vector3.down * 4; // always relative to start
                 Sequence seq = DOTween.Sequence();
                 seq.Append(obj.transform.DOMove(peakPos, duration * 0.2f).SetEase(Ease.OutQuad));
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));

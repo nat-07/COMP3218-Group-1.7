@@ -38,9 +38,15 @@ public class PressurePointer : MonoBehaviour
             timer = 0;
             timerReached = false;
         }
-        if (this.transform.position.y > 4.22 || this.transform.position.y < -4.22)
+        if (this.transform.position.y > 4.22f)
         {
-            pressureSpeed = -pressureSpeed;
+            transform.position = new Vector3(transform.position.x, 4.22f, transform.position.z);
+            pressureSpeed = -Mathf.Abs(pressureSpeed);
+        }
+        else if (this.transform.position.y < -4.22f)
+        {
+            transform.position = new Vector3(transform.position.x, -4.22f, transform.position.z);
+            pressureSpeed = Mathf.Abs(pressureSpeed);
         }
         if (moving)
         {
