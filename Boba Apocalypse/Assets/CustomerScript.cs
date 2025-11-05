@@ -5,9 +5,10 @@ using UnityEngine;
 public class CustomerScript : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float waitTime = 5f;
+    public float waitTime = 10f;
     public GameObject bobaObject;
-    public GameObject timerObject;  
+    public GameObject timerObject;
+    public Timer timer;
 
     private enum State { MovingToCenter, Waiting, MovingToExit }
     private State currentState = State.MovingToCenter;
@@ -16,6 +17,9 @@ public class CustomerScript : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(-10f, transform.position.y, transform.position.z);
+        transform.rotation = Quaternion.identity;
+        currentState = State.MovingToCenter;
+
 
         //HIDE BOBA 
         if (bobaObject != null)
@@ -40,7 +44,7 @@ public class CustomerScript : MonoBehaviour
                     currentState = State.Waiting;
                     waitTimer = 0f;
 
-                    // SHow at center
+                    // Show at center
                     if (bobaObject != null)
                     {
                         bobaObject.SetActive(true);
@@ -48,6 +52,8 @@ public class CustomerScript : MonoBehaviour
                     if (timerObject != null)
                     {
                         timerObject.SetActive(true);
+                        waitTime = 10f;
+                        timer.remainingTime = waitTime;
                     }
                 }
                 break;
