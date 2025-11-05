@@ -15,11 +15,16 @@ public class CustomerScript : MonoBehaviour
     private enum State { MovingToCenter, Waiting, MovingToExit, GotBoba }
     private State currentState = State.MovingToCenter;
     private float waitTimer = 0f;
+    private float finalX;
+    private float finalY;
     
 
     void Start()
     {
-        transform.position = new Vector3(-10f, transform.position.y, transform.position.z);
+        finalY = Random.Range(-1f, 2f);
+        finalX = Random.Range(-6f, 10f);
+        Debug.Log(finalX);
+        transform.position = new Vector3(-10f, finalY, transform.position.z);
         transform.rotation = Quaternion.identity;
         currentState = State.MovingToCenter;
 
@@ -41,8 +46,7 @@ public class CustomerScript : MonoBehaviour
         {
             case State.MovingToCenter:
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
-                if (transform.position.x >= 0f)
+                if (transform.position.x >= finalX)
                 {
                     currentState = State.Waiting;
                     waitTimer = 0f;
