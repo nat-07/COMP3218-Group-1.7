@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 
 public class CustomerScript : MonoBehaviour
@@ -9,10 +10,12 @@ public class CustomerScript : MonoBehaviour
     public GameObject bobaObject;
     public GameObject timerObject;
     public Timer timer;
+    public bool gotBoba;
 
-    private enum State { MovingToCenter, Waiting, MovingToExit }
+    private enum State { MovingToCenter, Waiting, MovingToExit, GotBoba }
     private State currentState = State.MovingToCenter;
     private float waitTimer = 0f;
+    
 
     void Start()
     {
@@ -20,7 +23,7 @@ public class CustomerScript : MonoBehaviour
         transform.rotation = Quaternion.identity;
         currentState = State.MovingToCenter;
 
-
+        timer.remainingTime = 100f;
         //HIDE BOBA 
         if (bobaObject != null)
         {
@@ -79,7 +82,25 @@ public class CustomerScript : MonoBehaviour
 
                 if (transform.position.x > 10f)
                 {
-                    Destroy(gameObject);
+                    Start();
+                }
+                break;
+
+            case State.GotBoba:
+                timer.remainingTime = 100f;
+                if (bobaObject != null)
+                {
+                    bobaObject.SetActive(false);
+                }
+                if (timerObject != null)
+                {
+                    timerObject.SetActive(false);
+                }
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+
+                if (transform.position.x > 10f)
+                {
+                    Start();
                 }
                 break;
         }
@@ -92,7 +113,8 @@ public class CustomerScript : MonoBehaviour
             // Get the color from the Renderer material
             Color squareColor = collision.gameObject.GetComponent<Renderer>().material.color;
             Debug.Log("Collided with a square! Its color is: " + squareColor);
-            Start();
+            gotBoba = true;
+            currentState = State.GotBoba;
         }
 
     }

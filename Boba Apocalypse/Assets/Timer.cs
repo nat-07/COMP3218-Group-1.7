@@ -7,6 +7,7 @@ using UnityEngine.Experimental.Rendering;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] Canvas timerCanvas;
     [SerializeField] public float remainingTime;
 
     void Update()
@@ -14,6 +15,7 @@ public class Timer : MonoBehaviour
     {
         if (remainingTime > 0)
         {
+            timerCanvas.gameObject.SetActive(true);
             remainingTime -= Time.deltaTime;
             int minutes = Mathf.FloorToInt(remainingTime / 60);
             int seconds = Mathf.FloorToInt(remainingTime % 60);
@@ -22,7 +24,7 @@ public class Timer : MonoBehaviour
         else
         {
             // hide timer when 0
-            gameObject.SetActive(false);
+            timerCanvas.gameObject.SetActive(false);
         }
     }
 }

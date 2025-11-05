@@ -2732,6 +2732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1651528725}
+  - component: {fileID: 1651528726}
   m_Layer: 0
   m_Name: ScoreSystem
   m_TagString: Untagged
@@ -2754,6 +2755,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651528726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651528724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b45aa1967fb43d46bdb4171cb46cfb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomerScript: {fileID: 1995368366}
+  ScoreVar: {fileID: 1306296927}
+  Level: {fileID: 485775708}
 --- !u!1 &1712636307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2782,6 @@ GameObject:
   - component: {fileID: 1712636312}
   - component: {fileID: 1712636311}
   - component: {fileID: 1712636310}
-  - component: {fileID: 1712636309}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2794,20 +2809,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3.3, y: -2.1}
   m_SizeDelta: {x: 82.2975, y: 10.42666}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1712636309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712636307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53de16c01dddb62498b654d28a061a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 1844100078}
-  remainingTime: 10
 --- !u!114 &1712636310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3103,6 +3104,7 @@ GameObject:
   - component: {fileID: 1995368369}
   - component: {fileID: 1995368371}
   - component: {fileID: 1995368372}
+  - component: {fileID: 1995368373}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -3126,7 +3128,8 @@ MonoBehaviour:
   waitTime: 10
   bobaObject: {fileID: 854772602}
   timerObject: {fileID: 1844100077}
-  timer: {fileID: 0}
+  timer: {fileID: 1995368373}
+  gotBoba: 0
 --- !u!212 &1995368367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3280,6 +3283,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &1995368373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995368365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53de16c01dddb62498b654d28a061a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1844100078}
+  timerCanvas: {fileID: 1712636312}
+  remainingTime: 10
 --- !u!1 &1995760056
 GameObject:
   m_ObjectHideFlags: 0

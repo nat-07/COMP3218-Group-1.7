@@ -26,6 +26,9 @@ public class DirectionPointer : MonoBehaviour
         if (this.transform.position.x > 6.45 || this.transform.position.x < -6.45)
         {
             rotationSpeed = -rotationSpeed;
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, -6.45f, 6.45f);
+            transform.position = pos;
         }
         if (moving)
         {
