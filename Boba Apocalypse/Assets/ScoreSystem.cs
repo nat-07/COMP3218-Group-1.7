@@ -9,11 +9,12 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField] public TextMeshProUGUI ScoreVar;
     [SerializeField] public TextMeshProUGUI Level;
     // Start is called before the first frame update
-
     private int score;
+    private int level;
     void Start()
     {
         score = 0;
+        level = 1;
         ScoreVar.text = score.ToString();
     }
 
@@ -22,9 +23,14 @@ public class ScoreSystem : MonoBehaviour
     {
         if (CustomerScript != null && CustomerScript.gotBoba)
         {
-            score += 10;
+            score += 20;
             ScoreVar.text = score.ToString();
             CustomerScript.gotBoba = false;
+        }
+        if (score >= (30 + 20 * (level - 1)))
+        {
+            level += 1;
+            Level.text = string.Format("Level {0}", level);
         }
     }
 }
