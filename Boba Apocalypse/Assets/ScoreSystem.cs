@@ -17,7 +17,7 @@ public class ScoreSystem : MonoBehaviour
     private int[] levelsToUnlockToppings = { 4, 8, 12, 16, 20 };
     void Start()
     {
-        score = 140;
+        score = 0;
         level = 1;
         ScoreVar.text = score.ToString();
         for (int i = 0; i < toppings.Length; i++)
@@ -31,7 +31,7 @@ public class ScoreSystem : MonoBehaviour
     {
         if (CustomerScript != null && CustomerScript.gotBoba)
         {
-            score += 20;
+            score += 10;
             ScoreVar.text = score.ToString();
             CustomerScript.gotBoba = false;
         }

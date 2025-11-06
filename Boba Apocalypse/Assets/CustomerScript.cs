@@ -10,6 +10,7 @@ public class CustomerScript : MonoBehaviour
     public GameObject bobaObject;
     public GameObject timerObject;
     public Timer timer;
+    public HP hp;
     public bool gotBoba;
 
     private enum State { MovingToCenter, Waiting, MovingToExit, GotBoba }
@@ -21,8 +22,8 @@ public class CustomerScript : MonoBehaviour
 
     void Start()
     {
-        finalY = Random.Range(-1f, 2f);
-        finalX = Random.Range(-6f, 10f);
+        finalY = Random.Range(-1f, 1f);
+        finalX = Random.Range(-6f, 8f);
         Debug.Log(finalX);
         transform.position = new Vector3(-10f, finalY, transform.position.z);
         transform.rotation = Quaternion.identity;
@@ -70,6 +71,7 @@ public class CustomerScript : MonoBehaviour
 
                 if (waitTimer >= waitTime)
                 {
+                    hp.ReduceHP();
                     currentState = State.MovingToExit;
 
 
@@ -122,6 +124,7 @@ public class CustomerScript : MonoBehaviour
         }
 
     }
+
 
 
 }
