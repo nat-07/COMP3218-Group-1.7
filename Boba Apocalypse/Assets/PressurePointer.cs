@@ -6,10 +6,16 @@ using UnityEngine;
 public class PressurePointer : MonoBehaviour
 {
     [SerializeField] public float pressureSpeed;
+    AudioManager audioManager;
     public static Boolean moving;
     public static Boolean finalStop;
     Boolean timerReached = false;
     float timer = 0;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         moving = false;
@@ -33,6 +39,7 @@ public class PressurePointer : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && moving && timerReached)
         {
+            audioManager.PlaySFX(audioManager.throwBoba);
             moving = false;
             finalStop = true;
             timer = 0;

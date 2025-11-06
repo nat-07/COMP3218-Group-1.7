@@ -7,6 +7,7 @@ using UnityEditor;
 
 public class BobaMovement : MonoBehaviour
 {
+    AudioManager audioManager;
     public GameObject[] objectsToTrack;
     public GameObject BobaCup;
     public GameObject[] otherObjectsToTrack;// assign in Inspector
@@ -20,7 +21,11 @@ public class BobaMovement : MonoBehaviour
     float directionPointerY;
     float pressureSpeed;
     Vector3 iniPos;
-    // Start is called before the first frame update
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         iniPos = GameObject.Find("BobaCupThrow").transform.position;
@@ -46,6 +51,7 @@ public class BobaMovement : MonoBehaviour
 
         if (PressurePointer.finalStop)
         {
+            
             directionPointerX = directionPointer.position.x;
             directionPointerY = directionPointer.position.y;
             pressureSpeed = (pressurePointer.position.y + 4.22f) / 8.44f;
@@ -65,6 +71,7 @@ public class BobaMovement : MonoBehaviour
 
             float finalY = Math.Abs(directionPointerY * (3 * pressureSpeed) - directionPointerY);
             Vector3 finalPos = new Vector3(finalX, finalY, 0);
+            
             transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
             if (Vector3.Distance(transform.position, finalPos) < 0.01f)
             {
@@ -94,13 +101,9 @@ public class BobaMovement : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
 {
-   
-
 
     MoveTableUpTween();
     MoveTableDownTween();
-        
-    
     transform.position = iniPos;
     PressurePointer.finalStop = false;
     PressurePointer.moving = false;
@@ -110,7 +113,8 @@ public class BobaMovement : MonoBehaviour
 }
     
    public void MoveTableUpTween()
-{
+    {
+
     if (objectsToTrack == null || objectsToTrack.Length == 0) return;
 
     for (int i = 0; i < objectsToTrack.Length; i++)

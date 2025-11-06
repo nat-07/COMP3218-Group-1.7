@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class MoveDownKey : MonoBehaviour
 {
+    AudioManager audioManager;
     public GameObject[] objectsToTrack;
     public GameObject BobaCup;
     public GameObject BobaCupThrow;
@@ -16,6 +17,11 @@ public class MoveDownKey : MonoBehaviour
 
     public float distance = 20f;
     public float duration = 2f;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
 {
@@ -36,6 +42,8 @@ public class MoveDownKey : MonoBehaviour
         // Example: press space to move all down relative to initial position
        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            audioManager.PlaySFX(audioManager.tableDown);
+
            
             for (int i = 0; i < objectsToTrack.Length; i++)
             {
@@ -66,7 +74,7 @@ public class MoveDownKey : MonoBehaviour
                 stuffToAppear[i].SetActive(true);
             }
             
-             SpriteRenderer sourceRenderer = BobaCup.GetComponent<SpriteRenderer>();
+            SpriteRenderer sourceRenderer = BobaCup.GetComponent<SpriteRenderer>();
             SpriteRenderer myRenderer = BobaCupThrow.GetComponent<SpriteRenderer>();
             myRenderer.sprite = sourceRenderer.sprite;
 
@@ -76,6 +84,7 @@ public class MoveDownKey : MonoBehaviour
         // Example: press R to reset to initial positions
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            audioManager.PlaySFX(audioManager.putTopping);
             for (int i = 0; i < objectsToTrack.Length; i++)
             {
                 var obj = objectsToTrack[i];
