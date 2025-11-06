@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HP : MonoBehaviour
+{
+    public GameObject[] HPHearts;
+    private int hp;
+    // Start is called before the first frame update
+    void Start()
+    {
+        hp = 4;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (hp == -1)
+        {
+            Application.Quit(); 
+        }
+    }
+
+    public void ReduceHP()
+    {
+        hp--;
+        Debug.Log(hp);
+        for (int i = hp+1; i < HPHearts.Length; i++)
+        {
+            HPHearts[i].SetActive(false);
+        }
+    }
+
+}

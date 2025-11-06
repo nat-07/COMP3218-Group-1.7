@@ -8,6 +8,9 @@ TagManager:
   - Ice
   - MilkTea
   - Square
+  - Audio
+  - Topping2
+  - Topping3
   layers:
   - Default
   - TransparentFX
