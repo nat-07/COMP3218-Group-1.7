@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Drag : MonoBehaviour
 {
+    AudioManager audioManager;
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 originalPosition;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -21,13 +26,26 @@ public class Drag : MonoBehaviour
         {
             // Move object, taking into account original offset
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            
         }
     }
 
-    
+void OnMouseEnter ()
+{
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.material.color = Color.yellow;
+}
+
+void OnMouseExit ()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.material.color = Color.white;
+}
+
 
     private void OnMouseDown()
     {
+         audioManager.PlaySFX(audioManager.pickingUp);
         // Record the difference between objects centre, and the clicked point on the camera plane. 
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         dragging = true;
