@@ -11,6 +11,7 @@ public class CustomerScript : MonoBehaviour
     public GameObject timerObject;
     public Timer timer;
     public HP hp;
+    public ScoreSystem scoreSystem;
     public bool gotBoba;
 
     private enum State { MovingToCenter, Waiting, MovingToExit, GotBoba }
@@ -114,13 +115,14 @@ public class CustomerScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if we collided with an object tagged "Square"
-        if (collision.gameObject.CompareTag("Square"))
+        if (collision.gameObject.CompareTag("Square") && currentState == State.Waiting)
         {
             // Get the color from the Renderer material
             Color squareColor = collision.gameObject.GetComponent<Renderer>().material.color;
             Debug.Log("Collided with a square! Its color is: " + squareColor);
             gotBoba = true;
             currentState = State.GotBoba;
+            scoreSystem.AddScore();
         }
 
     }

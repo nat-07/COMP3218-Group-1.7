@@ -1409,13 +1409,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515456006}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 9.502366
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1458,6 +1458,7 @@ MonoBehaviour:
   timerObject: {fileID: 888383140}
   timer: {fileID: 515456007}
   hp: {fileID: 817655503}
+  scoreSystem: {fileID: 1651528726}
   gotBoba: 0
 --- !u!212 &515456012
 SpriteRenderer:
@@ -1660,37 +1661,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &598392878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 598392879}
-  m_Layer: 0
-  m_Name: CustomerDistanceTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &598392879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598392878}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54478955, y: -0.5378177, z: -0.019809129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3201,6 +3171,7 @@ MonoBehaviour:
   timerObject: {fileID: 1431951240}
   timer: {fileID: 1125692103}
   hp: {fileID: 817655503}
+  scoreSystem: {fileID: 1651528726}
   gotBoba: 0
 --- !u!212 &1125692108
 SpriteRenderer:
@@ -4677,6 +4648,7 @@ GameObject:
   - component: {fileID: 1483515216}
   - component: {fileID: 1483515220}
   - component: {fileID: 1483515219}
+  - component: {fileID: 1483515221}
   m_Layer: 0
   m_Name: BobaCupThrow
   m_TagString: Square
@@ -4842,6 +4814,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cbbc50d63614dbaa05475f3b875905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1483515221
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483515215}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1501732212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5605,6 +5604,11 @@ MonoBehaviour:
   - {fileID: 1551811265}
   - {fileID: 1182115289}
   - {fileID: 147022580}
+  Customers:
+  - {fileID: 515456006}
+  - {fileID: 1125692102}
+  - {fileID: 1664422870}
+  - {fileID: 1779849198}
 --- !u!1 &1664422870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,6 +5748,7 @@ MonoBehaviour:
   timerObject: {fileID: 393219095}
   timer: {fileID: 1664422871}
   hp: {fileID: 817655503}
+  scoreSystem: {fileID: 1651528726}
   gotBoba: 0
 --- !u!212 &1664422876
 SpriteRenderer:
@@ -6055,6 +6060,7 @@ MonoBehaviour:
   timerObject: {fileID: 1318750266}
   timer: {fileID: 1779849199}
   hp: {fileID: 817655503}
+  scoreSystem: {fileID: 1651528726}
   gotBoba: 0
 --- !u!212 &1779849204
 SpriteRenderer:
@@ -6383,6 +6389,7 @@ MonoBehaviour:
   timerObject: {fileID: 1844100077}
   timer: {fileID: 1995368373}
   hp: {fileID: 817655503}
+  scoreSystem: {fileID: 1651528726}
   gotBoba: 0
 --- !u!212 &1995368367
 SpriteRenderer:
@@ -6473,13 +6480,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995368365}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 9.502366
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -6752,4 +6759,3 @@ SceneRoots:
   - {fileID: 1338752295}
   - {fileID: 78398922}
   - {fileID: 1651528725}
-  - {fileID: 598392879}
