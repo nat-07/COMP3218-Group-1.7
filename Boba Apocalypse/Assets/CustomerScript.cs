@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CustomerScript : MonoBehaviour
 {
+
+    AudioManager audioManager;
+    public Animator npcAnimator;
     public float moveSpeed = 2f;
     public float waitTime = 10f;
     public GameObject bobaObject;
@@ -19,6 +22,11 @@ public class CustomerScript : MonoBehaviour
     private float waitTimer = 0f;
     private float finalX;
     private float finalY;
+    
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     
 
     void Start()
@@ -44,12 +52,14 @@ public class CustomerScript : MonoBehaviour
 
     void Update()
     {
+        
         switch (currentState)
         {
             case State.MovingToCenter:
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
                 if (transform.position.x >= finalX)
                 {
+                    npcAnimator.SetTrigger("stopMoving");
                     currentState = State.Waiting;
                     waitTimer = 0f;
 
@@ -72,7 +82,10 @@ public class CustomerScript : MonoBehaviour
 
                 if (waitTimer >= waitTime)
                 {
+                    audioManager.PlaySFX(audioManager.fail);
                     hp.ReduceHP();
+                    npcAnimator.ResetTrigger("stopMoving");
+                    npcAnimator.SetTrigger("fail");
                     currentState = State.MovingToExit;
 
 
@@ -85,15 +98,19 @@ public class CustomerScript : MonoBehaviour
                 break;
 
             case State.MovingToExit:
+           
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
                 if (transform.position.x > 10f)
                 {
+                    npcAnimator.ResetTrigger("fail");
+                 
                     Start();
                 }
                 break;
 
             case State.GotBoba:
+                
                 timer.remainingTime = 100f;
                 if (bobaObject != null)
                 {
@@ -103,10 +120,13 @@ public class CustomerScript : MonoBehaviour
                 {
                     timerObject.SetActive(false);
                 }
+                
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
                 if (transform.position.x > 10f)
                 {
+                    npcAnimator.ResetTrigger("hitSuccess");
+
                     Start();
                 }
                 break;
@@ -117,10 +137,15 @@ public class CustomerScript : MonoBehaviour
         // Check if we collided with an object tagged "Square"
         if (collision.gameObject.CompareTag("Square") && currentState == State.Waiting)
         {
+           
+        
             // Get the color from the Renderer material
             Color squareColor = collision.gameObject.GetComponent<Renderer>().material.color;
             Debug.Log("Collided with a square! Its color is: " + squareColor);
             gotBoba = true;
+            npcAnimator.ResetTrigger("stopMoving");
+            npcAnimator.SetTrigger("hitSuccess");
+            audioManager.PlaySFX(audioManager.success);
             currentState = State.GotBoba;
             scoreSystem.AddScore();
         }

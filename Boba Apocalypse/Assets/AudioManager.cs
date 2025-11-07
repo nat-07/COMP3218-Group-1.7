@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip throwBoba;
 
+    public AudioClip success;
+    public AudioClip fail;
+
     void Start()
     {
         musicSource.clip = background;

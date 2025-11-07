@@ -32,6 +32,9 @@ public class ChangeCup : MonoBehaviour
         topping = false;
         topping2 = false;
         topping3 = false;
+        topping4 = false;
+        topping5 = false;
+        topping6 = false; 
         
 
     }
@@ -43,6 +46,9 @@ public class ChangeCup : MonoBehaviour
         topping = false; 
         topping2 = false;
         topping3 = false;
+        topping4 = false;
+        topping5 = false;
+        topping6 = false; 
         
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite1");
@@ -73,6 +79,19 @@ public class ChangeCup : MonoBehaviour
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite14");
             }
+            else if (ice && topping4)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite18");
+            }
+            else if (ice && topping5)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite22");
+            }
+            else if (ice && topping6)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite30");
+            }
+
             else if (ice)
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite7");
@@ -88,6 +107,18 @@ public class ChangeCup : MonoBehaviour
             else if (topping3)
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite15");
+            }
+            else if (topping4)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite19");
+            }
+            else if (topping5)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite23");
+            }
+            else if (topping6)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite28");
             }
 
             else
@@ -115,6 +146,21 @@ public class ChangeCup : MonoBehaviour
 
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite14");
             }
+            else if (milkTea && topping4)
+            {
+
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite18");
+            }
+            else if (milkTea && topping5)
+            {
+
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite22");
+            }
+            else if (milkTea && topping6)
+            {
+
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite30");
+            }
             else if (milkTea)
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite7");
@@ -133,6 +179,18 @@ public class ChangeCup : MonoBehaviour
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite17");
             }
+            else if (topping4)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite21");
+            }
+            else if (topping5)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite25");
+            }
+            else if (topping6)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite27");
+            }
 
             else
             {
@@ -146,6 +204,9 @@ public class ChangeCup : MonoBehaviour
             topping = true;
             topping2 = false;
             topping3 = false;
+            topping4 = false;
+            topping5 = false;
+            topping6 = false;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (milkTea && ice)
             {
@@ -172,6 +233,9 @@ public class ChangeCup : MonoBehaviour
             topping2 = true;
             topping = false;
             topping3 = false;
+            topping4 = false;
+            topping5 = false;
+            topping6 = false;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (milkTea && ice)
             {
@@ -179,7 +243,7 @@ public class ChangeCup : MonoBehaviour
             }
             else if (milkTea)
             {
-                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite12");
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite13");
             }
             else if (ice)
             {
@@ -198,6 +262,9 @@ public class ChangeCup : MonoBehaviour
             topping3 = true;
             topping = false;
             topping2 = false;
+            topping4 = false;
+            topping5 = false;
+            topping6 = false;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (milkTea && ice)
             {
@@ -215,6 +282,93 @@ public class ChangeCup : MonoBehaviour
             else
             {
                 sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite16");
+            }
+
+        }
+        else if (other.CompareTag("Topping4"))
+        {
+            Debug.Log("Detected Topping!");
+            topping4 = true;
+            topping = false;
+            topping2 = false;
+            topping3 = false;
+            topping5 = false;
+            topping6 = false;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (milkTea && ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite18");
+            }
+            else if (milkTea)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite19");
+            }
+            else if (ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite21");
+            }
+
+            else
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite20");
+            }
+
+        }
+        else if (other.CompareTag("Topping5"))
+        {
+            Debug.Log("Detected Topping!");
+            topping5 = true;
+            topping = false;
+            topping2 = false;
+            topping3 = false;
+            topping4 = false;
+            topping6 = false;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (milkTea && ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite22");
+            }
+            else if (milkTea)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite23");
+            }
+            else if (ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite25");
+            }
+
+            else
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite24");
+            }
+
+        }
+        else if (other.CompareTag("Topping6"))
+        {
+            Debug.Log("Detected Topping!");
+            topping6 = true;
+            topping = false;
+            topping2 = false;
+            topping3 = false;
+            topping4 = false;
+            topping5 = false;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (milkTea && ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite30");
+            }
+            else if (milkTea)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite28");
+            }
+            else if (ice)
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite27");
+            }
+
+            else
+            {
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite29");
             }
 
         }

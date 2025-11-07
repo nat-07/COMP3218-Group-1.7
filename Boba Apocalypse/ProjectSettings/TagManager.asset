@@ -11,6 +11,9 @@ TagManager:
   - Audio
   - Topping2
   - Topping3
+  - Topping4
+  - Topping5
+  - Topping6
   layers:
   - Default
   - TransparentFX
