@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer.Internal;
@@ -83,6 +84,7 @@ public class CustomerScript : MonoBehaviour
                 break;
 
             case State.Waiting:
+                rb.bodyType = RigidbodyType2D.Static;
                 if (waitTimer == 0f)
                 {
                     setBobaItem();
@@ -109,7 +111,6 @@ public class CustomerScript : MonoBehaviour
             case State.MovingToExit:
            
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-                rb.bodyType = RigidbodyType2D.Kinematic;
 
                 if (transform.position.x > 10f)
                 {
@@ -120,7 +121,6 @@ public class CustomerScript : MonoBehaviour
                 break;
 
             case State.GotBoba:
-                rb.bodyType = RigidbodyType2D.Kinematic;
                 
                 timer.remainingTime = 100f;
                 if (bobaObject != null)
@@ -145,7 +145,7 @@ public class CustomerScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("alien") && currentState == State.MovingToCenter)
+        if (collision.gameObject.CompareTag("alien") && currentState == State.MovingToCenter && this.transform.position.x > -7.32)
         {
             npcAnimator.SetTrigger("stopMoving");
             currentState = State.Waiting;
@@ -228,5 +228,7 @@ public class CustomerScript : MonoBehaviour
             }
         }
     }
+
+
 
 }
