@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 329635019}
   m_Layer: 0
   m_Name: Customer5
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 416210201}
   timerCanvas: {fileID: 1749129651}
-  remainingTime: 10
+  remainingTime: 20
 --- !u!61 &329635013
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -851,7 +851,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329635011}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -896,13 +896,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 329635019}
   moveSpeed: 2
-  waitTime: 10
+  waitTime: 20
   bobaObject: {fileID: 1535463546}
   timerObject: {fileID: 416210198}
   timer: {fileID: 329635012}
   hp: {fileID: 1072927836}
   scoreSystem: {fileID: 1651528726}
   gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices:
+  - {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
+  - {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  - {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
+  - {fileID: 21300000, guid: ba59eacc690584ea395204d3b75b7057, type: 3}
+  - {fileID: 21300000, guid: 03b176e15dcad4441a3410ef81a0fc94, type: 3}
+  - {fileID: 21300000, guid: f39615924df8b4f2c87a980106810020, type: 3}
+  - {fileID: 21300000, guid: 1f5059500579a402aa850786a269e2ea, type: 3}
+  - {fileID: 21300000, guid: 9b4a273e502a04c7a94a9a94c4954224, type: 3}
+  - {fileID: 21300000, guid: e5b37850bef11434da640c0197fe171b, type: 3}
+  - {fileID: 21300000, guid: 469b79d2662f54e7484ac2165170d683, type: 3}
+  - {fileID: 21300000, guid: d7ceb410a4f5446a0932a3b793382432, type: 3}
+  - {fileID: 21300000, guid: d83a2e85f5a974a46ac8a85c4c519050, type: 3}
+  - {fileID: 21300000, guid: cc87fcfd204bd49e3ac67273a4213ec6, type: 3}
+  - {fileID: 21300000, guid: 7b6b06f5dc847427ab099ca99fe8fba7, type: 3}
 --- !u!212 &329635017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1556,7 +1572,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a20f1c4883607b49b8abe90ff213ac1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1564,7 +1580,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &493673764
@@ -1576,8 +1592,8 @@ Transform:
   m_GameObject: {fileID: 493673761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.556, z: 2.7080617}
-  m_LocalScale: {x: 0.43643263, y: 0.37490606, z: -100}
+  m_LocalPosition: {x: -0.016999999, y: 0.60740787, z: 2.7080617}
+  m_LocalScale: {x: 0.2, y: 0.2, z: -100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1723565068}
@@ -1819,7 +1835,7 @@ GameObject:
   - component: {fileID: 667810093}
   m_Layer: 0
   m_Name: Customer3
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1838,7 +1854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 200325142}
   timerCanvas: {fileID: 1030717665}
-  remainingTime: 10
+  remainingTime: 20
 --- !u!61 &667810087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1892,7 +1908,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667810085}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1937,13 +1953,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 667810093}
   moveSpeed: 2
-  waitTime: 10
+  waitTime: 20
   bobaObject: {fileID: 1888418201}
   timerObject: {fileID: 200325139}
   timer: {fileID: 667810086}
   hp: {fileID: 1072927836}
   scoreSystem: {fileID: 1651528726}
   gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices:
+  - {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
+  - {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  - {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
+  - {fileID: 21300000, guid: ba59eacc690584ea395204d3b75b7057, type: 3}
+  - {fileID: 21300000, guid: 03b176e15dcad4441a3410ef81a0fc94, type: 3}
+  - {fileID: 21300000, guid: f39615924df8b4f2c87a980106810020, type: 3}
+  - {fileID: 21300000, guid: 1f5059500579a402aa850786a269e2ea, type: 3}
+  - {fileID: 21300000, guid: 9b4a273e502a04c7a94a9a94c4954224, type: 3}
+  - {fileID: 21300000, guid: e5b37850bef11434da640c0197fe171b, type: 3}
+  - {fileID: 21300000, guid: 469b79d2662f54e7484ac2165170d683, type: 3}
+  - {fileID: 21300000, guid: d7ceb410a4f5446a0932a3b793382432, type: 3}
+  - {fileID: 21300000, guid: d83a2e85f5a974a46ac8a85c4c519050, type: 3}
+  - {fileID: 21300000, guid: cc87fcfd204bd49e3ac67273a4213ec6, type: 3}
+  - {fileID: 21300000, guid: 7b6b06f5dc847427ab099ca99fe8fba7, type: 3}
 --- !u!212 &667810091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2389,7 +2421,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a20f1c4883607b49b8abe90ff213ac1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2409,8 +2441,8 @@ Transform:
   m_GameObject: {fileID: 854772602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.556, z: 2.7080617}
-  m_LocalScale: {x: 0.43643263, y: 0.37490606, z: -100}
+  m_LocalPosition: {x: -0.017, y: 0.6, z: 2.7080617}
+  m_LocalScale: {x: 0.2, y: 0.2, z: -100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1995368368}
@@ -2451,7 +2483,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1.72, y: 1.72}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2649,7 +2681,7 @@ GameObject:
   - component: {fileID: 943858308}
   m_Layer: 0
   m_Name: Customer2
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2668,7 +2700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 2002113037}
   timerCanvas: {fileID: 2037112085}
-  remainingTime: 10
+  remainingTime: 20
 --- !u!61 &943858302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2722,7 +2754,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943858300}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2767,13 +2799,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 943858308}
   moveSpeed: 2
-  waitTime: 10
+  waitTime: 20
   bobaObject: {fileID: 1880145736}
   timerObject: {fileID: 2002113034}
   timer: {fileID: 943858301}
   hp: {fileID: 1072927836}
   scoreSystem: {fileID: 1651528726}
   gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices:
+  - {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
+  - {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  - {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
+  - {fileID: 21300000, guid: ba59eacc690584ea395204d3b75b7057, type: 3}
+  - {fileID: 21300000, guid: 03b176e15dcad4441a3410ef81a0fc94, type: 3}
+  - {fileID: 21300000, guid: f39615924df8b4f2c87a980106810020, type: 3}
+  - {fileID: 21300000, guid: 1f5059500579a402aa850786a269e2ea, type: 3}
+  - {fileID: 21300000, guid: 9b4a273e502a04c7a94a9a94c4954224, type: 3}
+  - {fileID: 21300000, guid: e5b37850bef11434da640c0197fe171b, type: 3}
+  - {fileID: 21300000, guid: 469b79d2662f54e7484ac2165170d683, type: 3}
+  - {fileID: 21300000, guid: d7ceb410a4f5446a0932a3b793382432, type: 3}
+  - {fileID: 21300000, guid: d83a2e85f5a974a46ac8a85c4c519050, type: 3}
+  - {fileID: 21300000, guid: cc87fcfd204bd49e3ac67273a4213ec6, type: 3}
+  - {fileID: 21300000, guid: 7b6b06f5dc847427ab099ca99fe8fba7, type: 3}
 --- !u!212 &943858306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5005,7 +5053,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a20f1c4883607b49b8abe90ff213ac1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5013,7 +5061,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1535463549
@@ -5025,8 +5073,8 @@ Transform:
   m_GameObject: {fileID: 1535463546}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.556, z: 2.7080617}
-  m_LocalScale: {x: 0.43643263, y: 0.37490606, z: -100}
+  m_LocalPosition: {x: -0.016999999, y: 0.60740787, z: 2.7080617}
+  m_LocalScale: {x: 0.2, y: 0.2, z: -100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 329635018}
@@ -5759,7 +5807,7 @@ GameObject:
   - component: {fileID: 1723565069}
   m_Layer: 0
   m_Name: Customer4
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5778,7 +5826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1822119499}
   timerCanvas: {fileID: 47390058}
-  remainingTime: 10
+  remainingTime: 20
 --- !u!61 &1723565063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5816,7 +5864,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.032, y: 1.032}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.032, y: 1.032}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -5832,7 +5880,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723565061}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5877,13 +5925,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1723565069}
   moveSpeed: 2
-  waitTime: 10
+  waitTime: 20
   bobaObject: {fileID: 493673761}
   timerObject: {fileID: 1822119496}
   timer: {fileID: 1723565062}
   hp: {fileID: 1072927836}
   scoreSystem: {fileID: 1651528726}
   gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices:
+  - {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
+  - {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  - {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
+  - {fileID: 21300000, guid: ba59eacc690584ea395204d3b75b7057, type: 3}
+  - {fileID: 21300000, guid: 03b176e15dcad4441a3410ef81a0fc94, type: 3}
+  - {fileID: 21300000, guid: f39615924df8b4f2c87a980106810020, type: 3}
+  - {fileID: 21300000, guid: 1f5059500579a402aa850786a269e2ea, type: 3}
+  - {fileID: 21300000, guid: 9b4a273e502a04c7a94a9a94c4954224, type: 3}
+  - {fileID: 21300000, guid: e5b37850bef11434da640c0197fe171b, type: 3}
+  - {fileID: 21300000, guid: 469b79d2662f54e7484ac2165170d683, type: 3}
+  - {fileID: 21300000, guid: d7ceb410a4f5446a0932a3b793382432, type: 3}
+  - {fileID: 21300000, guid: d83a2e85f5a974a46ac8a85c4c519050, type: 3}
+  - {fileID: 21300000, guid: cc87fcfd204bd49e3ac67273a4213ec6, type: 3}
+  - {fileID: 21300000, guid: 7b6b06f5dc847427ab099ca99fe8fba7, type: 3}
 --- !u!212 &1723565067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5930,7 +5994,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.032, y: 1.032}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6448,7 +6512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a20f1c4883607b49b8abe90ff213ac1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6456,7 +6520,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1880145739
@@ -6468,8 +6532,8 @@ Transform:
   m_GameObject: {fileID: 1880145736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.556, z: 2.7080617}
-  m_LocalScale: {x: 0.43643263, y: 0.37490606, z: -100}
+  m_LocalPosition: {x: -0.016999999, y: 0.60740787, z: 2.7080617}
+  m_LocalScale: {x: 0.2, y: 0.2, z: -100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943858307}
@@ -6578,7 +6642,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a20f1c4883607b49b8abe90ff213ac1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6586,7 +6650,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1888418204
@@ -6598,8 +6662,8 @@ Transform:
   m_GameObject: {fileID: 1888418201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: 0.556, z: 2.7080617}
-  m_LocalScale: {x: 0.43643263, y: 0.37490606, z: -100}
+  m_LocalPosition: {x: -0.016999999, y: 0.60740787, z: 2.7080617}
+  m_LocalScale: {x: 0.2, y: 0.2, z: -100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 667810092}
@@ -6761,7 +6825,7 @@ GameObject:
   - component: {fileID: 1995368374}
   m_Layer: 0
   m_Name: Customer
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6780,13 +6844,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1995368374}
   moveSpeed: 2
-  waitTime: 10
+  waitTime: 20
   bobaObject: {fileID: 854772602}
   timerObject: {fileID: 1844100077}
   timer: {fileID: 1995368373}
   hp: {fileID: 1072927836}
   scoreSystem: {fileID: 1651528726}
   gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices:
+  - {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
+  - {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  - {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
+  - {fileID: 21300000, guid: ba59eacc690584ea395204d3b75b7057, type: 3}
+  - {fileID: 21300000, guid: 03b176e15dcad4441a3410ef81a0fc94, type: 3}
+  - {fileID: 21300000, guid: f39615924df8b4f2c87a980106810020, type: 3}
+  - {fileID: 21300000, guid: 1f5059500579a402aa850786a269e2ea, type: 3}
+  - {fileID: 21300000, guid: 9b4a273e502a04c7a94a9a94c4954224, type: 3}
+  - {fileID: 21300000, guid: e5b37850bef11434da640c0197fe171b, type: 3}
+  - {fileID: 21300000, guid: 469b79d2662f54e7484ac2165170d683, type: 3}
+  - {fileID: 21300000, guid: d7ceb410a4f5446a0932a3b793382432, type: 3}
+  - {fileID: 21300000, guid: d83a2e85f5a974a46ac8a85c4c519050, type: 3}
+  - {fileID: 21300000, guid: cc87fcfd204bd49e3ac67273a4213ec6, type: 3}
+  - {fileID: 21300000, guid: 7b6b06f5dc847427ab099ca99fe8fba7, type: 3}
 --- !u!212 &1995368367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6876,7 +6956,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995368365}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -6954,7 +7034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1844100078}
   timerCanvas: {fileID: 1712636312}
-  remainingTime: 10
+  remainingTime: 20
 --- !u!95 &1995368374
 Animator:
   serializedVersion: 5

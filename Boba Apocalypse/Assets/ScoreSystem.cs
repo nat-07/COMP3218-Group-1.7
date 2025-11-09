@@ -14,13 +14,14 @@ public class ScoreSystem : MonoBehaviour
     // Start is called before the first frame update
     private int score;
     private int level;
-    private int currentUnlockedToppings;
+    public static int currentUnlockedToppings;
     private int currentUnlockedCustomers;
     private int[] levelsToUnlockToppings = { 2, 4, 6, 8, 10 };
     private int[] levelsToAddCustomer = { 2, 5, 7, 9 };
 
     void Start()
     {
+        currentUnlockedToppings = -1;
         score = 0;
         level = 1;
         ScoreVar.text = score.ToString();
@@ -82,7 +83,7 @@ public class ScoreSystem : MonoBehaviour
     
     IEnumerator AddNewCustomer()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(7);
         Customers[currentUnlockedCustomers].SetActive(true);
     }
 }
