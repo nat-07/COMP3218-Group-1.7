@@ -6,6 +6,7 @@ using UnityEngine;
 public class DirectionPointer : MonoBehaviour
 {
     [SerializeField] public float rotationSpeed = -30f;
+    [SerializeField] public GameObject bobaCupThrow;
     [SerializeField] private Transform rotateAround;
 
     public static Boolean moving;
@@ -19,6 +20,7 @@ public class DirectionPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.GetComponent<SpriteRenderer>().sprite = bobaCupThrow.GetComponent<SpriteRenderer>().sprite;
         if (Input.GetKey(KeyCode.Space))
         {
             moving = false;

@@ -69,6 +69,7 @@ public class MoveDownKey : MonoBehaviour
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
 
             }
+            stuffToAppear[2].transform.position = new Vector3(-7.83f, -4.22f, 0f);
             for (int i = 0; i < stuffToAppear.Length; i++)
             {
                 stuffToAppear[i].SetActive(true);

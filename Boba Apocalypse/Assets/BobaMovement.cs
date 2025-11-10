@@ -21,14 +21,16 @@ public class BobaMovement : MonoBehaviour
     float directionPointerY;
     float pressureSpeed;
     Vector3 iniPos;
-    
+    Quaternion iniRot;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
     {
-        iniPos = GameObject.Find("BobaCupThrow").transform.position;
+        iniPos = GameObject.Find("DirectionPointer").transform.position;
+        iniRot = GameObject.Find("DirectionPointer").transform.rotation;
         initialPositions = new Vector3[objectsToTrack.Length];
         for (int i = 0; i < objectsToTrack.Length; i++)
             initialPositions[i] = objectsToTrack[i].transform.position;
@@ -86,9 +88,10 @@ public class BobaMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
         yield return new WaitForSeconds(1);
-        while (Vector3.Distance(transform.position, iniPos) > 0.01f)
+        while (Vector3.Distance(transform.position, iniPos) > 0.01f && DirectionPointer.moving == false)
         {
             transform.position = iniPos;
+            transform.rotation = iniRot;
             MoveTableUpTween();
             MoveTableDownTween();
             yield return null;
@@ -101,35 +104,39 @@ public class BobaMovement : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
 {
-
-    MoveTableUpTween();
-    MoveTableDownTween();
-    transform.position = iniPos;
-    PressurePointer.finalStop = false;
-    PressurePointer.moving = false;
-    DirectionPointer.moving = true;
-
-    
+        if (PressurePointer.finalStop)
+        {
+            MoveTableUpTween();
+            MoveTableDownTween();
+            transform.position = iniPos;
+            transform.rotation = iniRot;
+            PressurePointer.finalStop = false;
+            PressurePointer.moving = false;
+            DirectionPointer.moving = true;
+        }
 }
     
    public void MoveTableUpTween()
     {
 
-    if (objectsToTrack == null || objectsToTrack.Length == 0) return;
+        if (objectsToTrack == null || objectsToTrack.Length == 0) return;
 
-    for (int i = 0; i < objectsToTrack.Length; i++)
-    {
-        if (objectsToTrack[i] != null)
-            objectsToTrack[i].transform.DOMove(initialPositions[i], 1f);
-    }
+        for (int i = 0; i < objectsToTrack.Length; i++)
+        {
+            if (objectsToTrack[i] != null)
+            {
+                objectsToTrack[i].transform.DOMove(initialPositions[i], 1f);
+            }
+        }
 
-    if (objectsToTrack.Length > 4 && objectsToTrack[4] != null)
-    {
-        var cup = objectsToTrack[4].GetComponent<ChangeCup>();
-        if (cup != null)
-            cup.ResetBoba();
+        if (objectsToTrack.Length > 4 && objectsToTrack[4] != null)
+        {
+            var cup = objectsToTrack[4].GetComponent<ChangeCup>();
+            if (cup != null)
+                cup.ResetBoba();
+        }
+
     }
-}
 
 public void MoveTableDownTween()
 {

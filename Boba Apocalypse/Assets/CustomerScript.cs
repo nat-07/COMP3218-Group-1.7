@@ -36,9 +36,8 @@ public class CustomerScript : MonoBehaviour
 
     void Start()
     {
-        finalY = Random.Range(-1f, 1f);
+        finalY = Random.Range(0.25f, 1f);
         finalX = Random.Range(-6f, 8f);
-        Debug.Log(finalX);
         transform.position = new Vector3(-10f, finalY, transform.position.z);
         transform.rotation = Quaternion.identity;
         currentState = State.MovingToCenter;
