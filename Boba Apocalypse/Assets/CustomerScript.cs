@@ -198,35 +198,39 @@ public class CustomerScript : MonoBehaviour
 
 
         if (bobaObject != null)
-        {
-            switch (ScoreSystem.currentUnlockedToppings)
-            {
-                case -1:
-                    nextBoba = (int)Random.Range(0, 4);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 0:
-                    nextBoba = (int)Random.Range(0, 6);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 1:
-                    nextBoba = (int)Random.Range(0, 8);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 2:
-                    nextBoba = (int)Random.Range(0, 10);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 3:
-                    nextBoba = (int)Random.Range(0, 12);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 4:
-                    nextBoba = (int)Random.Range(0, 14);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-            }
+        { 
+                switch (ScoreSystem.currentUnlockedToppings)
+                {
+                    case -1:
+                        nextBoba = (int)Random.Range(0, 4);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                    case 0:
+                        nextBoba = (int)Random.Range(0, 6);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                    case 1:
+                        nextBoba = (int)Random.Range(0, 8);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                    case 2:
+                        nextBoba = (int)Random.Range(0, 10);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                    case 3:
+                        nextBoba = (int)Random.Range(0, 12);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                    case 4:
+                        nextBoba = (int)Random.Range(0, 14);
+                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                        break;
+                }
+            
+
         }
+
+
     }
 
 

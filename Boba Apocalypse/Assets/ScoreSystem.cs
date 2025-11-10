@@ -17,7 +17,7 @@ public class ScoreSystem : MonoBehaviour
     public static int currentUnlockedToppings;
     private int currentUnlockedCustomers;
     private int[] levelsToUnlockToppings = { 2, 4, 6, 8, 10 };
-    private int[] levelsToAddCustomer = { 2, 5, 7, 9 };
+    private int[] levelsToAddCustomer = { 3, 5, 7, 9 };
 
     void Start()
     {
@@ -38,12 +38,12 @@ public class ScoreSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (score >= (30 + 20 * (level - 1)))
+        if (score >= (10 * (level * level - level + 2)))
         {
             level += 1;
             Level.text = string.Format("Level {0}", level);
         }
+
         if (levelsToUnlockToppings.Contains(level))
         {
             for (int i = 0; i <= levelsToUnlockToppings.Length; i++)
@@ -73,12 +73,10 @@ public class ScoreSystem : MonoBehaviour
 
     public void AddScore()
     {
-        if (CustomerScript != null && CustomerScript.gotBoba)
-        {
             score += 10;
             ScoreVar.text = score.ToString();
             CustomerScript.gotBoba = false;
-        }
+
     }
     
     IEnumerator AddNewCustomer()
@@ -86,4 +84,10 @@ public class ScoreSystem : MonoBehaviour
         yield return new WaitForSeconds(7);
         Customers[currentUnlockedCustomers].SetActive(true);
     }
+
+    public int getScore()
+    {
+        return score;
+    }
+
 }
