@@ -12,7 +12,7 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField] public GameObject[] toppings;
     [SerializeField] public GameObject[] Customers;
     // Start is called before the first frame update
-    private int score;
+    private static int score;
     private int level;
     public static int currentUnlockedToppings;
     private int currentUnlockedCustomers;

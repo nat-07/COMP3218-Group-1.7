@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
 
 public class HP : MonoBehaviour
 {
-    public GameOverScreen GameOverScreen;
+    public GameObject background;
+    public TextMeshProUGUI scoreText;
 
     public GameObject[] HPHearts;
     private int hp;
@@ -19,7 +23,8 @@ public class HP : MonoBehaviour
     {
         if (hp == -1)
         {
-            Application.Quit(); 
+            background.SetActive(true);
+            SceneManager.LoadScene("GameOverDraft");
         }
     }
 
