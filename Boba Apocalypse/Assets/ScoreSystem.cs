@@ -90,4 +90,9 @@ public class ScoreSystem : MonoBehaviour
         return score;
     }
 
+    public int getLevel()
+    {
+        return level;
+    }
+
 }

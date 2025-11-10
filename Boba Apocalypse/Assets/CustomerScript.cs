@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class CustomerScript : MonoBehaviour
     private float finalY;
     private int nextBoba;
     private Rigidbody2D rb;
+    private bool alienWaiting;
 
     private void Awake()
     {
@@ -111,11 +113,25 @@ public class CustomerScript : MonoBehaviour
            
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
-                if (transform.position.x > 10f)
+                if (transform.position.x > 10f && !alienWaiting)
                 {
                     npcAnimator.ResetTrigger("fail");
+                    
+                    if (this.name != "Customer")
+                    {
+                        int next = Random.Range(0, 2);
+                        if (next == 0)
+                        {
+                            Debug.Log("Customer skipped this round");
+                            StartCoroutine((WaitOneRound()));
+                        }
+                    }
+                    else
+                    {
+                        Start();
+                    }
                  
-                    Start();
+
                 }
                 break;
 
@@ -133,11 +149,25 @@ public class CustomerScript : MonoBehaviour
                 
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
-                if (transform.position.x > 10f)
+                if (transform.position.x > 10f && !alienWaiting)
                 {
                     npcAnimator.ResetTrigger("hitSuccess");
 
-                    Start();
+                    if (this.name != "Customer")
+                    {
+
+                        int next = Random.Range(0, 2);
+
+                        if (next == 0)
+                        {
+                            Debug.Log("Customer skipped this round");
+                            StartCoroutine((WaitOneRound()));
+                        }
+                    }
+                    else
+                    {
+                        Start();
+                    }
                 }
                 break;
         }
@@ -231,6 +261,16 @@ public class CustomerScript : MonoBehaviour
 
 
     }
+
+    IEnumerator WaitOneRound()
+    {
+        alienWaiting = true;
+        yield return new WaitForSeconds(20);
+        alienWaiting = false;
+        Start();
+    }
+
+    
 
 
 
