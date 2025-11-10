@@ -102,7 +102,7 @@ public class ChangeCup : MonoBehaviour
             }
             else if (topping2)
             {
-                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite12");
+                sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite13");
             }
             else if (topping3)
             {

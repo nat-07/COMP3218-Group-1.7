@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HP : MonoBehaviour
 {
+    public GameOverScreen GameOverScreen;
+
     public GameObject[] HPHearts;
     private int hp;
     // Start is called before the first frame update
