@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePointer : MonoBehaviour
+public class PressurePointerTutorial : MonoBehaviour
 {
     [SerializeField] public float pressureSpeed;
     AudioManager audioManager;

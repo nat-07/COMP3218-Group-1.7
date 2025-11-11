@@ -7,6 +7,8 @@ public class Drag : MonoBehaviour
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 originalPosition;
+
+    bool activate = false;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -18,6 +20,11 @@ public class Drag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!activate)
+        {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.material.color = Color.white;
+        }
         if (dragging)
         {
             // Move object, taking into account original offset
@@ -27,28 +34,49 @@ public class Drag : MonoBehaviour
     }
     void OnMouseEnter()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.material.color = Color.yellow;
+        if (activate)
+        {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.material.color = Color.yellow;
+        }
     }
     void OnMouseExit()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.material.color = Color.white;
+        if (activate)
+        {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.material.color = Color.white;
+        }
     }
     private void OnMouseDown()
     {
-        audioManager.PlaySFX(audioManager.pickingUp);
-        // Record the difference between objects centre, and the clicked point on the camera plane. 
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dragging = true;
+        if (activate)
+        {
+            audioManager.PlaySFX(audioManager.pickingUp);
+            // Record the difference between objects centre, and the clicked point on the camera plane. 
+            offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dragging = true;
+        }
     }
     private void OnMouseUp()
     {
-        //Stop Dragging 
+            //Stop Dragging 
         dragging = false;
 
-        //Object returns to same position ((idk if we want smooth transmission or not))
+            //Object returns to same position ((idk if we want smooth transmission or not))
+
+        
         transform.position = originalPosition;
+    }
+
+    public void makeActive()
+    {
+        activate = true;
+    }
+    public void makeNotActive()
+    {
+        activate = false;
+        Debug.Log("Deactivated");
     }
 
 }

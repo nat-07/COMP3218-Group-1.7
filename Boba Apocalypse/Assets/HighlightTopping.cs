@@ -17,7 +17,7 @@ public class HighlightTopping : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    /* void Update()
     {
         // Auto-highlight if this is the current tutorial step
         if (TutorialManager.isTutorial && TutorialManager.currentTutorialStep == tutorialStepRequired)
@@ -35,7 +35,7 @@ public class HighlightTopping : MonoBehaviour
             }
         }
     }
-
+ */
     void OnMouseEnter()
     {
         // Only allow hover highlight if it's this ingredient's turn or tutorial is off
