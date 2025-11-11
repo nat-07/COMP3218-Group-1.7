@@ -25,17 +25,17 @@ public class PressurePointerTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!DirectionPointer.moving && !finalStop)
+        if (!DirectionPointerTutorial.moving && !finalStop)
         {
             if (!timerReached)
             {
                 timer += Time.deltaTime;
             }
-            /* if (!timerReached && timer > 0.2)
+            if (!timerReached && timer > 0.2)
             {
                 moving = true;
                 timerReached = true;
-            } */
+            }
         }
         if (Input.GetKey(KeyCode.Space) && moving && timerReached)
         {

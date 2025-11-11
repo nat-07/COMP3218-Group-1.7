@@ -49,7 +49,7 @@ public class BobaMovementTutorial : MonoBehaviour
     {
 
 
-        if (PressurePointer.finalStop)
+        if (PressurePointerTutorial.finalStop)
         {
             
             directionPointerX = directionPointer.position.x;

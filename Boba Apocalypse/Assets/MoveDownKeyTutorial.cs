@@ -70,11 +70,13 @@ public class MoveDownKeyTutorial : MonoBehaviour
                 seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
 
             }
+            stuffToAppear[2].transform.position = new Vector3(-7.83f, -4.22f, 0f);
             for (int i = 0; i < stuffToAppear.Length; i++)
             {
                 stuffToAppear[i].SetActive(true);
             }
-
+            stuffToAppear[0].transform.position = new Vector3(-6.41f, -3.66f, 0f);
+            stuffToAppear[0].transform.rotation = Quaternion.Euler(0.245f, -0.521f, 25.147f);
             SpriteRenderer sourceRenderer = BobaCup.GetComponent<SpriteRenderer>();
             SpriteRenderer myRenderer = BobaCupThrow.GetComponent<SpriteRenderer>();
             myRenderer.sprite = sourceRenderer.sprite;

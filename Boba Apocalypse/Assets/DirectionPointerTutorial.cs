@@ -9,6 +9,7 @@ using TMPro;
 public class DirectionPointerTutorial : MonoBehaviour
 {
     [SerializeField] public float rotationSpeed = -30f;
+    [SerializeField] public GameObject bobaCupThrow;
     [SerializeField] private Transform rotateAround;
 
     public TextMeshProUGUI tutorialText;
@@ -27,6 +28,7 @@ public class DirectionPointerTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.GetComponent<SpriteRenderer>().sprite = bobaCupThrow.GetComponent<SpriteRenderer>().sprite;
         if (Input.GetKey(KeyCode.Space))
         {
             moving = false;
