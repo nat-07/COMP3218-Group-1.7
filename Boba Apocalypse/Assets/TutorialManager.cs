@@ -24,6 +24,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject milkTea;
     public GameObject ice;
 
+
+
     public GameObject topping;
 
     public GameObject bobaCup;
@@ -59,10 +61,10 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator ShowMessages()
     {
-        // Show initial tutorial messages
-        for (int i = 0; i < tutorialMessages.Length; i++)
+        //TODO: Change this back
+        for (int i = 0; i < 0; i++)
         {
-            
+
             tutorialText.text = "";
             yield return new WaitForSeconds(0.1f);
             tutorialText.text = tutorialMessages[i];
@@ -76,7 +78,7 @@ public class TutorialManager : MonoBehaviour
 
         // Start ingredient highlighting tutorial
         currentTutorialStep = 0; // Start highlighting first ingredient
-    } 
+    }
 
     public static void AdvanceTutorialStep()
     {
@@ -100,7 +102,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (currentTutorialStep == 0)
         {
-             tutorialText.gameObject.SetActive(true);
+            tutorialText.gameObject.SetActive(true);
             if (tutorialBackground != null) tutorialBackground.SetActive(true);
             if (samIcon != null) samIcon.SetActive(true);
             tutorialText.text = "Drag the Milk Tea to the cup in the middle";
@@ -111,25 +113,25 @@ public class TutorialManager : MonoBehaviour
 
         }
         if (bobaCup.GetComponent<SpriteRenderer>().sprite == firstStepCup && currentTutorialStep == 0)
-        {   
+        {
             milkTea.GetComponent<Drag>().makeNotActive();
             SpriteRenderer mt = milkTea.GetComponent<SpriteRenderer>();
             mt.color = Color.white;
             AdvanceTutorialStep();
-              
-               
+
+
         }
 
         if (currentTutorialStep == 1)
         {
-       
+
             tutorialText.text = "Now the Ice!";
             ice.GetComponent<Drag>().makeActive();
             SpriteRenderer ic = ice.GetComponent<SpriteRenderer>();
             ic.color = Color.green;
 
         }
-        if (bobaCup.GetComponent<SpriteRenderer>().sprite == secondStepCup && currentTutorialStep == 1 )
+        if (bobaCup.GetComponent<SpriteRenderer>().sprite == secondStepCup && currentTutorialStep == 1)
         {
             SpriteRenderer ic = ice.GetComponent<SpriteRenderer>();
             ice.GetComponent<Drag>().makeNotActive();
@@ -147,7 +149,7 @@ public class TutorialManager : MonoBehaviour
         }
         if (bobaCup.GetComponent<SpriteRenderer>().sprite == thirdStepCup && currentTutorialStep == 2)
         {
-           
+
             topping.GetComponent<Drag>().makeNotActive();
             AdvanceTutorialStep();
             SpriteRenderer tp = topping.GetComponent<SpriteRenderer>();
@@ -156,7 +158,7 @@ public class TutorialManager : MonoBehaviour
 
         if (currentTutorialStep == 3)
         {
-            
+
             tutorialText.text = "Now, press the DOWN ARROW";
 
             moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
@@ -170,12 +172,31 @@ public class TutorialManager : MonoBehaviour
         }
         if (currentTutorialStep == 4)
         {
-             tutorialText.gameObject.SetActive(true);
+            tutorialText.gameObject.SetActive(true);
             if (tutorialBackground != null) tutorialBackground.SetActive(true);
             if (samIcon != null) samIcon.SetActive(true);
             tutorialText.text = "We must aim the boba properly to the customer";
             AdvanceTutorialStep();
         }
-        
+        if (currentTutorialStep == 6)
+        {
+            milkTea.GetComponent<Drag>().makeActive();
+            topping.GetComponent<Drag>().makeActive();
+            ice.GetComponent<Drag>().makeActive();
+            StartCoroutine(samYapsMore());
+           
+            AdvanceTutorialStep();
+        }
+
     }
+    IEnumerator samYapsMore()
+{
+        tutorialText.text = "Nice! Now do this yourself.";
+        yield return new WaitForSeconds(4);
+          tutorialText.gameObject.SetActive(false);
+            if (tutorialBackground != null) tutorialBackground.SetActive(false);
+            if (samIcon != null) samIcon.SetActive(false);
+    
 }
+}
+

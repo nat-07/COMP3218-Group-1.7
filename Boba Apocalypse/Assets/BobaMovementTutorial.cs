@@ -21,14 +21,17 @@ public class BobaMovementTutorial : MonoBehaviour
     float directionPointerY;
     float pressureSpeed;
     Vector3 iniPos;
-    
+
+    Quaternion iniRot;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
     {
-        iniPos = GameObject.Find("BobaCupThrow").transform.position;
+        iniPos = GameObject.Find("DirectionPointer").transform.position;
+        iniRot = GameObject.Find("DirectionPointer").transform.rotation;
+        
         initialPositions = new Vector3[objectsToTrack.Length];
         for (int i = 0; i < objectsToTrack.Length; i++)
             initialPositions[i] = objectsToTrack[i].transform.position;
@@ -76,7 +79,8 @@ public class BobaMovementTutorial : MonoBehaviour
             if (Vector3.Distance(transform.position, finalPos) < 0.01f)
             {
 
-            StartCoroutine(MoveBobaAndReturn(finalPos));
+                StartCoroutine(MoveBobaAndReturn(finalPos));
+        
 
             }
 
@@ -86,17 +90,18 @@ public class BobaMovementTutorial : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
         yield return new WaitForSeconds(1);
-        while (Vector3.Distance(transform.position, iniPos) > 0.01f)
-        {
+     
+        
             transform.position = iniPos;
             MoveTableUpTween();
             MoveTableDownTween();
             yield return null;
-        }
         yield return new WaitForSeconds(1);
-        PressurePointer.finalStop = false;
-        PressurePointer.moving = false;
-        DirectionPointer.moving = true;
+        PressurePointerTutorial.finalStop = false;
+        PressurePointerTutorial.moving = false;
+        DirectionPointerTutorial.moving = true;
+            BoxCollider2D bc = GetComponent<BoxCollider2D>();
+            bc.isTrigger = true;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,10 +109,16 @@ public class BobaMovementTutorial : MonoBehaviour
 
     MoveTableUpTween();
     MoveTableDownTween();
-    transform.position = iniPos;
-    PressurePointer.finalStop = false;
-    PressurePointer.moving = false;
-    DirectionPointer.moving = true;
+        transform.position = iniPos;
+        transform.rotation = iniRot;
+    PressurePointerTutorial.finalStop = false;
+    PressurePointerTutorial.moving = false;
+        DirectionPointerTutorial.moving = true;
+        Debug.Log("Colliddeeee");
+        Debug.Log(collision.gameObject.name);
+        TutorialManager.AdvanceTutorialStep();
+    BoxCollider2D bc = GetComponent<BoxCollider2D>();
+            bc.isTrigger = true;
 
     
 }
@@ -118,7 +129,8 @@ public class BobaMovementTutorial : MonoBehaviour
     if (objectsToTrack == null || objectsToTrack.Length == 0) return;
 
     for (int i = 0; i < objectsToTrack.Length; i++)
-    {
+        {
+            
         if (objectsToTrack[i] != null)
             objectsToTrack[i].transform.DOMove(initialPositions[i], 1f);
     }

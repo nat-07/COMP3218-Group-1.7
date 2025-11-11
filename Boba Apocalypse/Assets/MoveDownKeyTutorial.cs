@@ -32,6 +32,10 @@ public class MoveDownKeyTutorial : MonoBehaviour
         initialPositions2 = new Vector3[otherObjectsToTrack.Length];
         for (int i = 0; i < otherObjectsToTrack.Length; i++)
             initialPositions2[i] = otherObjectsToTrack[i].transform.position;
+        for (int i = 0; i < stuffToAppear.Length; i++)
+        {
+            stuffToAppear[i].SetActive(false);
+        }
     }
 
     void Update()
@@ -67,6 +71,7 @@ public class MoveDownKeyTutorial : MonoBehaviour
 
             }
             stuffToAppear[2].transform.position = new Vector3(-7.83f, -4.22f, 0f);
+            Debug.Log("now hiding");
             for (int i = 0; i < stuffToAppear.Length; i++)
             {
                 Debug.Log("hide");
@@ -79,35 +84,7 @@ public class MoveDownKeyTutorial : MonoBehaviour
 
         }
 
-        // Example: press R to reset to initial positions
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            audioManager.PlaySFX(audioManager.putTopping);
-            for (int i = 0; i < objectsToTrack.Length; i++)
-            {
-                var obj = objectsToTrack[i];
-
-                Vector3 peakPos = initialPositions[i] + Vector3.up * 0.2f;
-                Vector3 endPos = initialPositions[i]; // always relative to start
-                Sequence seq = DOTween.Sequence();
-                seq.Append(obj.transform.DOMove(peakPos, duration).SetEase(Ease.OutQuad));
-                seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
-            }
-            for (int i = 0; i < otherObjectsToTrack.Length; i++)
-            {
-                var obj = otherObjectsToTrack[i];
-
-                Vector3 peakPos = initialPositions2[i] + Vector3.down * 0.2f;
-                Vector3 endPos = initialPositions2[i]; // always relative to start
-                Sequence seq = DOTween.Sequence();
-                seq.Append(obj.transform.DOMove(peakPos, duration).SetEase(Ease.OutQuad));
-                seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
-            }
-            for (int i = 0; i < stuffToAppear.Length; i++)
-            {
-                stuffToAppear[i].SetActive(false);
-            }
-        }
+        
     }
     
     public void enableDownKey()
