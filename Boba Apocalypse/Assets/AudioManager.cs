@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip success;
     public AudioClip fail;
 
+    public AudioClip levelUp;
+
     void Start()
     {
         musicSource.clip = background;

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ScoreSystem : MonoBehaviour
 {
+    AudioManager audioManager;
     public CustomerScript CustomerScript;
     [SerializeField] public TextMeshProUGUI ScoreVar;
     [SerializeField] public TextMeshProUGUI Level;
@@ -19,6 +20,10 @@ public class ScoreSystem : MonoBehaviour
     private int[] levelsToUnlockToppings = { 2, 4, 6, 8, 10 };
     private int[] levelsToAddCustomer = { 3, 5, 7, 9 };
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         currentUnlockedToppings = -1;
@@ -40,9 +45,35 @@ public class ScoreSystem : MonoBehaviour
     {
         if (score >= (10 * (level * level - level + 2)))
         {
+            audioManager.PlaySFX(audioManager.levelUp);
             level += 1;
             Level.text = string.Format("Level {0}", level);
+            StartCoroutine(Flash());
+
         }
+        IEnumerator Flash()
+{
+    Color yellow = Color.yellow;
+    Color white = Color.white;
+
+    float duration = 2f; 
+    float half = duration / 2f;
+
+    Level.color = yellow;
+    yield return new WaitForSeconds(half);
+
+    Level.color = white;
+    yield return new WaitForSeconds(half);
+    
+    Level.color = yellow;
+    yield return new WaitForSeconds(half);
+
+    Level.color = white;
+    yield return new WaitForSeconds(half);
+
+
+  
+}
 
         if (levelsToUnlockToppings.Contains(level))
         {

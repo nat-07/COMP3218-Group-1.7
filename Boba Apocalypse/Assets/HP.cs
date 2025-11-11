@@ -15,7 +15,7 @@ public class HP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 4;
+        hp = 0;
     }
 
     // Update is called once per frame
@@ -31,7 +31,6 @@ public class HP : MonoBehaviour
     public void ReduceHP()
     {
         hp--;
-        Debug.Log(hp);
         for (int i = hp+1; i < HPHearts.Length; i++)
         {
             HPHearts[i].SetActive(false);

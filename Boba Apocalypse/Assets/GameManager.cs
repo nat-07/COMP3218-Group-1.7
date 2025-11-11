@@ -6,22 +6,19 @@ public class GameManager : MonoBehaviour
     public ScoreSystem scoreSystem;
     public static int score;
 
-    void Awake()
+    void Update()
     {
         score = scoreSystem.getScore();
+        
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ✅ This keeps the object between scenes
-        }
-        else
-        {
-            Destroy(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
     }
-
     public static int getFinalScore()
     {
+        
         return score;
     }
 }

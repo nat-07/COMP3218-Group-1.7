@@ -19,7 +19,7 @@ public class MoveDownKey : MonoBehaviour
     public float distance = 20f;
     public float duration = 2f;
 
-    public Boolean isTableDown = false;
+    bool isTableDown = false;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class MoveDownKey : MonoBehaviour
 
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.DownArrow) )
+       if (Input.GetKeyDown(KeyCode.DownArrow) && !isTableDown)
         {
             audioManager.PlaySFX(audioManager.tableDown);
             for (int i = 0; i < objectsToTrack.Length; i++)
@@ -78,6 +78,7 @@ public class MoveDownKey : MonoBehaviour
             SpriteRenderer sourceRenderer = BobaCup.GetComponent<SpriteRenderer>();
             SpriteRenderer myRenderer = BobaCupThrow.GetComponent<SpriteRenderer>();
             myRenderer.sprite = sourceRenderer.sprite;
+      
 
 
         }

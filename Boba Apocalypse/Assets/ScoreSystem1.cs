@@ -19,6 +19,7 @@ public class ScoreSystem1 : MonoBehaviour
     private int[] levelsToUnlockToppings = { 2, 4, 6, 8, 10 };
     private int[] levelsToAddCustomer = { 3, 5, 7, 9 };
     
+    
 
     void Start()
     {
