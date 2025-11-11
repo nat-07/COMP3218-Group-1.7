@@ -14,8 +14,6 @@ public class CustomerScriptTutorial : MonoBehaviour
     public GameObject bobaObject;
     public GameObject timerObject;
     public Timer timer;
-    public HP hp;
-    public ScoreSystem scoreSystem;
     public bool gotBoba;
     public int currentBobaItem; //id of the boba choice
     public Sprite[] bobaChoices;
@@ -36,7 +34,7 @@ public class CustomerScriptTutorial : MonoBehaviour
 
     void Start()
     {
-        finalY = -0.5f;
+        finalY = 0.25f;
         finalX = 0;
         Debug.Log(finalX);
         transform.position = new Vector3(-10f, finalY, transform.position.z);
@@ -109,7 +107,6 @@ public class CustomerScriptTutorial : MonoBehaviour
                     if (waitTimer >= waitTime)
                     {
                         audioManager.PlaySFX(audioManager.fail);
-                        hp.ReduceHP();
                         npcAnimator.ResetTrigger("stopMoving");
                         npcAnimator.SetTrigger("fail");
                         currentState = State.MovingToExit;
@@ -193,12 +190,10 @@ public class CustomerScriptTutorial : MonoBehaviour
                 npcAnimator.SetTrigger("hitSuccess");
                 audioManager.PlaySFX(audioManager.success);
                 currentState = State.GotBoba;
-                scoreSystem.AddScore();
             }
             else
             {
                 audioManager.PlaySFX(audioManager.fail);
-                hp.ReduceHP();
                 npcAnimator.ResetTrigger("stopMoving");
                 npcAnimator.SetTrigger("fail");
                 currentState = State.MovingToExit;

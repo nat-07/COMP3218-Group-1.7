@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 101161317}
   - component: {fileID: 101161316}
   - component: {fileID: 101161315}
-  - component: {fileID: 101161321}
   m_Layer: 3
   m_Name: BobaCupThrow
   m_TagString: Square
@@ -324,35 +323,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &101161321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101161314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9c5c7c693454a41b191a74475f4a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToTrack:
-  - {fileID: 1407588173}
-  - {fileID: 1209620456}
-  - {fileID: 1415141371}
-  - {fileID: 411033814}
-  - {fileID: 848038518}
-  BobaCup: {fileID: 1407588173}
-  otherObjectsToTrack:
-  - {fileID: 1868853589}
-  - {fileID: 1427253586}
-  - {fileID: 1338767813}
-  stuffToAppear:
-  - {fileID: 829215205}
-  - {fileID: 1598105583}
-  duration: 2
-  directionPointer: {fileID: 829215208}
-  pressurePointer: {fileID: 1338767814}
 --- !u!1 &115072357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 829215208}
   - component: {fileID: 829215207}
-  - component: {fileID: 829215206}
   - component: {fileID: 829215209}
   - component: {fileID: 829215212}
   - component: {fileID: 829215211}
@@ -1345,20 +1314,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &829215206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829215205}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bd9f6cd6a26934798efdf7d7abed64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  rotateAround: {fileID: 1598105585}
 --- !u!212 &829215207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2515,7 +2470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338767814}
   - component: {fileID: 1338767816}
-  - component: {fileID: 1338767815}
+  - component: {fileID: 1338767817}
   m_Layer: 0
   m_Name: PressurePointer
   m_TagString: Untagged
@@ -2538,19 +2493,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1338767815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338767813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1654798f8a2fa4e9a48a2c8c98e9d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressureSpeed: 10
 --- !u!212 &1338767816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2603,6 +2545,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1338767817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338767813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138549dbc418a4be38169f8a7236a9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressureSpeed: 10
 --- !u!1 &1407588173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,7 +3452,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706604265}
-  - component: {fileID: 1706604264}
   - component: {fileID: 1706604266}
   m_Layer: 0
   m_Name: MoveManager
@@ -3506,41 +3460,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1706604264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706604263}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5fee92870a16419b9ffcf9c706104c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToTrack:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1415141371}
-  - {fileID: 1407588173}
-  - {fileID: 411033814}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  BobaCup: {fileID: 1407588173}
-  BobaCupThrow: {fileID: 101161314}
-  otherObjectsToTrack:
-  - {fileID: 1868853589}
-  - {fileID: 1427253586}
-  - {fileID: 1338767813}
-  - {fileID: 101161314}
-  stuffToAppear:
-  - {fileID: 829215205}
-  - {fileID: 0}
-  distance: 2
-  duration: 1
 --- !u!4 &1706604265
 Transform:
   m_ObjectHideFlags: 0
