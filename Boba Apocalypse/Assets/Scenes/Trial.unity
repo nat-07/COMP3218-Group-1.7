@@ -5944,6 +5944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651528725}
   - component: {fileID: 1651528726}
+  - component: {fileID: 1651528727}
   m_Layer: 0
   m_Name: ScoreSystem
   m_TagString: Untagged
@@ -5976,6 +5977,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b45aa1967fb43d46bdb4171cb46cfb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CustomerScript: {fileID: 1995368366}
+  ScoreVar: {fileID: 1306296927}
+  Level: {fileID: 485775708}
+  toppings:
+  - {fileID: 1188595751}
+  - {fileID: 1436521634}
+  - {fileID: 1551811265}
+  - {fileID: 1182115289}
+  - {fileID: 147022580}
+  Customers:
+  - {fileID: 943858300}
+  - {fileID: 667810085}
+  - {fileID: 1723565061}
+  - {fileID: 329635011}
+--- !u!114 &1651528727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651528724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c163a1f539c4bb5b4a9e6482b77e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CustomerScript: {fileID: 1995368366}
@@ -7148,7 +7175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1995368374}
-  moveSpeed: 2
+  moveSpeed: 3
   waitTime: 20
   bobaObject: {fileID: 854772602}
   timerObject: {fileID: 1844100077}
