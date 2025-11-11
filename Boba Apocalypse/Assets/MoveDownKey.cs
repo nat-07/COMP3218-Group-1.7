@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 
 public class MoveDownKey : MonoBehaviour
@@ -17,6 +18,8 @@ public class MoveDownKey : MonoBehaviour
 
     public float distance = 20f;
     public float duration = 2f;
+
+    public Boolean isTableDown = false;
 
     private void Awake()
     {
@@ -39,12 +42,9 @@ public class MoveDownKey : MonoBehaviour
 
     void Update()
     {
-        // Example: press space to move all down relative to initial position
-       if (Input.GetKeyDown(KeyCode.DownArrow))
+       if (Input.GetKeyDown(KeyCode.DownArrow) )
         {
             audioManager.PlaySFX(audioManager.tableDown);
-
-           
             for (int i = 0; i < objectsToTrack.Length; i++)
             {
                 var obj = objectsToTrack[i];
@@ -83,33 +83,6 @@ public class MoveDownKey : MonoBehaviour
         }
     
         // Example: press R to reset to initial positions
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            audioManager.PlaySFX(audioManager.putTopping);
-            for (int i = 0; i < objectsToTrack.Length; i++)
-            {
-                var obj = objectsToTrack[i];
-
-                Vector3 peakPos = initialPositions[i] + Vector3.up * 0.2f;
-                Vector3 endPos = initialPositions[i]; // always relative to start
-                Sequence seq = DOTween.Sequence();
-                seq.Append(obj.transform.DOMove(peakPos, duration).SetEase(Ease.OutQuad));
-                seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
-            }
-            for (int i = 0; i < otherObjectsToTrack.Length; i++)
-           {
-            var obj = otherObjectsToTrack[i];
-
-                Vector3 peakPos = initialPositions2[i] + Vector3.down * 0.2f;
-                Vector3 endPos = initialPositions2[i]; // always relative to start
-                Sequence seq = DOTween.Sequence();
-                seq.Append(obj.transform.DOMove(peakPos, duration).SetEase(Ease.OutQuad));
-                seq.Append(obj.transform.DOMove(endPos, duration * 0.8f).SetEase(Ease.InQuad));
-                }
-            for (int i = 0; i < stuffToAppear.Length; i++)
-            {
-                stuffToAppear[i].SetActive(false);
-            }
-        }
+        
     }
 }

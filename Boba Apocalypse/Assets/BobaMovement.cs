@@ -49,7 +49,7 @@ public class BobaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        print(PressurePointer.finalStop);
 
         if (PressurePointer.finalStop)
         {
@@ -64,11 +64,11 @@ public class BobaMovement : MonoBehaviour
             if (directionPointerX < 0)
             {
                 Debug.Log($"Direction is: {directionPointerX}");
-                finalX = directionPointerX - Math.Abs(directionPointerY * (Time.deltaTime * pressureSpeed)) * (float)Math.Tan(0.174);
+                finalX = directionPointerX - Math.Abs(directionPointerY * (Time.deltaTime * pressureSpeed)) * (float)Math.Tan(0.5);
             }
             else
             {
-                finalX = Math.Abs(directionPointerY * (3 * pressureSpeed)) * (float)Math.Tan(0.174) + directionPointerX;
+                finalX = Math.Abs(directionPointerY * (3 * pressureSpeed)) * (float)Math.Tan(0.5) + directionPointerX;
             }
 
             float finalY = Math.Abs(directionPointerY * (3 * pressureSpeed) - directionPointerY);
@@ -88,18 +88,21 @@ public class BobaMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, finalPos, pressureSpeed * 30f * Time.deltaTime);
         yield return new WaitForSeconds(1);
-        while (Vector3.Distance(transform.position, iniPos) > 0.01f && DirectionPointer.moving == false)
-        {
+        
+        
             transform.position = iniPos;
             transform.rotation = iniRot;
             MoveTableUpTween();
             MoveTableDownTween();
-            yield return null;
-        }
-        yield return new WaitForSeconds(1);
+            DirectionPointer.moving = true;
+           
+        
+        
+       
         PressurePointer.finalStop = false;
         PressurePointer.moving = false;
         DirectionPointer.moving = true;
+     
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
