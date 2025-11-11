@@ -29,6 +29,7 @@ public class CustomerScript : MonoBehaviour
     private int nextBoba;
     private Rigidbody2D rb;
     private bool alienWaiting;
+    private bool alienPaused;
 
     private void Awake()
     {
@@ -38,6 +39,11 @@ public class CustomerScript : MonoBehaviour
 
     void Start()
     {
+        if (this.name != "Customer" && scoreSystem.getBeginningLevel() && !alienPaused)
+        {
+            Debug.Log("Only 1 Alien with New Topping");
+            StartCoroutine(OnlyRunAlienWithNewTopping());
+        }
         finalY = Random.Range(0.25f, 1f);
         finalX = Random.Range(-6f, 8f);
         transform.position = new Vector3(-10f, finalY, transform.position.z);
@@ -59,7 +65,7 @@ public class CustomerScript : MonoBehaviour
 
     void Update()
     {
-        
+
         switch (currentState)
         {
             case State.MovingToCenter:
@@ -79,6 +85,10 @@ public class CustomerScript : MonoBehaviour
                     {
                         timerObject.SetActive(true);
                         waitTime = 20f;
+                        if (scoreSystem.getBeginningLevel())
+                        {
+                            waitTime = 30f;
+                        }
                         timer.remainingTime = waitTime;
                     }
                 }
@@ -116,7 +126,6 @@ public class CustomerScript : MonoBehaviour
                 if (transform.position.x > 10f && !alienWaiting)
                 {
                     npcAnimator.ResetTrigger("fail");
-                    
                     if (this.name != "Customer")
                     {
                         int next = Random.Range(0, 2);
@@ -152,7 +161,6 @@ public class CustomerScript : MonoBehaviour
                 if (transform.position.x > 10f && !alienWaiting)
                 {
                     npcAnimator.ResetTrigger("hitSuccess");
-
                     if (this.name != "Customer")
                     {
 
@@ -224,39 +232,68 @@ public class CustomerScript : MonoBehaviour
 
     void setBobaItem()
     {
-
+        Debug.Log(scoreSystem.getBeginningLevel());
 
         if (bobaObject != null)
         { 
-                switch (ScoreSystem.currentUnlockedToppings)
+                if (scoreSystem.getBeginningLevel())
                 {
-                    case -1:
-                        nextBoba = (int)Random.Range(0, 4);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                    case 0:
-                        nextBoba = (int)Random.Range(0, 6);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                    case 1:
-                        nextBoba = (int)Random.Range(0, 8);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                    case 2:
-                        nextBoba = (int)Random.Range(0, 10);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                    case 3:
-                        nextBoba = (int)Random.Range(0, 12);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                    case 4:
-                        nextBoba = (int)Random.Range(0, 14);
-                        bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                        break;
-                }
-            
+                    switch (scoreSystem.getLevel())
+                    {
+                        case 2:
+                            nextBoba = 5;
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 4:
+                            nextBoba = 7;
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 6:
+                            nextBoba = 9;
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 8:
+                            nextBoba = 11;
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 10:
+                            nextBoba = 13;
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                    }
+                    scoreSystem.setBeginningLevelFalse();
+            }
+                else
+                {
+                    switch (ScoreSystem.currentUnlockedToppings)
+                    {
+                        case -1:
+                            nextBoba = (int)Random.Range(0, 4);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 0:
+                            nextBoba = (int)Random.Range(0, 6);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 1:
+                            nextBoba = (int)Random.Range(0, 8);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 2:
+                            nextBoba = (int)Random.Range(0, 10);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 3:
+                            nextBoba = (int)Random.Range(0, 12);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                        case 4:
+                            nextBoba = (int)Random.Range(0, 14);
+                            bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
+                            break;
+                    }
 
+            }
         }
 
 
@@ -270,7 +307,18 @@ public class CustomerScript : MonoBehaviour
         Start();
     }
 
-    
+    IEnumerator OnlyRunAlienWithNewTopping()
+    {
+        gameObject.SetActive(false);
+        alienPaused = true;
+        yield return new WaitForSeconds(20);
+        alienPaused = false;
+        gameObject.SetActive(true);
+        Start();
+
+    }
+
+
 
 
 

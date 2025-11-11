@@ -48,32 +48,38 @@ public class ScoreSystem : MonoBehaviour
             audioManager.PlaySFX(audioManager.levelUp);
             level += 1;
             Level.text = string.Format("Level {0}", level);
+            Debug.Log(Level.text);
+            if (levelsToUnlockToppings.Contains(level))
+            {
+                Debug.Log("Toggle beginning of level to True");
+                beginningOfLevel = true;
+            }
             StartCoroutine(Flash());
 
         }
         IEnumerator Flash()
-{
-    Color yellow = Color.yellow;
-    Color white = Color.white;
+            {
+                Color yellow = Color.yellow;
+                Color white = Color.white;
 
-    float duration = 2f; 
-    float half = duration / 2f;
+                float duration = 2f; 
+                float half = duration / 2f;
 
-    Level.color = yellow;
-    yield return new WaitForSeconds(half);
+                Level.color = yellow;
+                yield return new WaitForSeconds(half);
 
-    Level.color = white;
-    yield return new WaitForSeconds(half);
+                Level.color = white;
+                yield return new WaitForSeconds(half);
     
-    Level.color = yellow;
-    yield return new WaitForSeconds(half);
+                Level.color = yellow;
+                yield return new WaitForSeconds(half);
 
-    Level.color = white;
-    yield return new WaitForSeconds(half);
+                Level.color = white;
+                yield return new WaitForSeconds(half);
 
 
   
-}
+            }
 
         if (levelsToUnlockToppings.Contains(level))
         {
@@ -119,6 +125,17 @@ public class ScoreSystem : MonoBehaviour
     public int getScore()
     {
         return score;
+    }
+
+    public bool getBeginningLevel()
+    {
+        return beginningOfLevel;
+    }
+
+    public void setBeginningLevelFalse()
+    {
+        Debug.Log("Toggle beginning of level to false");
+        beginningOfLevel = false;
     }
 
     public int getLevel()
