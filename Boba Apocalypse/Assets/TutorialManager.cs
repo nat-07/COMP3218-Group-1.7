@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
 
     public Sprite thirdStepCup;
 
-    public string[] tutorialMessages = new string[]
+    private string[] tutorialMessages = new string[]
     {
         "Hello, you're new here! My name is Sam!",
         "Let me help so you won't die hehe...",
@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator ShowMessages()
     {
         // Show initial tutorial messages
-        for (int i = 0; i < tutorialMessages.Length -1; i++)
+        for (int i = 0; i < tutorialMessages.Length; i++)
         {
             
             tutorialText.text = "";

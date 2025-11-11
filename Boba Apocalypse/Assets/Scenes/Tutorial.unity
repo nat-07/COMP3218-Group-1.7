@@ -911,12 +911,6 @@ MonoBehaviour:
   firstStepCup: {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
   secondStepCup: {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
   thirdStepCup: {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
-  tutorialMessages:
-  - Hello, you're new here! My name is Sam! Let me help so you won't die hehe...
-  - Make the Boba for the alien so they take mercy on you!
-  - Match the ingredients to make the correct boba tea!
-  - Let's try making one together!
-  - Let's try making one together!
 --- !u!4 &486225445
 Transform:
   m_ObjectHideFlags: 0
@@ -1973,13 +1967,14 @@ GameObject:
   - component: {fileID: 1099883931}
   - component: {fileID: 1099883930}
   - component: {fileID: 1099883938}
+  - component: {fileID: 1099883939}
   m_Layer: 0
   m_Name: Customer
   m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1099883930
 Animator:
   serializedVersion: 5
@@ -2107,7 +2102,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099883929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94c02035be998d84eb769caa650d4533, type: 3}
   m_Name: 
@@ -2218,6 +2213,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e40f5a7c5a24cd98b5a835f9106874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1099883939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099883929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e056192b1e44e4cae82939ec43e88e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcAnimator: {fileID: 1099883930}
+  moveSpeed: 2
+  waitTime: 20
+  bobaObject: {fileID: 1239157527}
+  timerObject: {fileID: 1529293771}
+  timer: {fileID: 1099883931}
+  hp: {fileID: 0}
+  scoreSystem: {fileID: 0}
+  gotBoba: 0
+  currentBobaItem: 0
+  bobaChoices: []
 --- !u!1 &1209620456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,10 +3579,10 @@ MonoBehaviour:
   otherObjectsToTrack:
   - {fileID: 1868853589}
   - {fileID: 1427253586}
-  - {fileID: 1338767813}
   stuffToAppear:
-  - {fileID: 1338767813}
   - {fileID: 829215205}
+  - {fileID: 1598105583}
+  - {fileID: 1338767813}
   distance: 20
   duration: 2
 --- !u!1 &1727959802
