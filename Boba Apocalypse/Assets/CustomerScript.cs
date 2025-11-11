@@ -32,7 +32,7 @@ public class CustomerScript : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-    
+
 
     void Start()
     {
@@ -45,14 +45,24 @@ public class CustomerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         timer.remainingTime = 100f;
+
         //HIDE BOBA 
         if (bobaObject != null)
         {
             bobaObject.SetActive(false);
         }
+
+        // Hide timer during tutorial
         if (timerObject != null)
         {
-            timerObject.SetActive(false);
+            if (TutorialManager.isTutorial)
+            {
+                timerObject.SetActive(false); // Don't show timer in tutorial
+            }
+            else
+            {
+                timerObject.SetActive(false); // Will show later
+            }
         }
     }
 
@@ -74,7 +84,9 @@ public class CustomerScript : MonoBehaviour
                     {
                         bobaObject.SetActive(true);
                     }
-                    if (timerObject != null)
+
+                    // Only show timer if NOT in tutorial
+                    if (timerObject != null && !TutorialManager.isTutorial)
                     {
                         timerObject.SetActive(true);
                         waitTime = 20f;
@@ -89,24 +101,27 @@ public class CustomerScript : MonoBehaviour
                 {
                     setBobaItem();
                 }
-                waitTimer += Time.deltaTime;
-                if (waitTimer >= waitTime)
+
+                // Only count down timer if NOT in tutorial mode
+                if (!TutorialManager.isTutorial)
                 {
-                    audioManager.PlaySFX(audioManager.fail);
-                    hp.ReduceHP();
-                    npcAnimator.ResetTrigger("stopMoving");
-                    npcAnimator.SetTrigger("fail");
-                    currentState = State.MovingToExit;
-
-
-                    if (bobaObject != null)
+                    waitTimer += Time.deltaTime;
+                    if (waitTimer >= waitTime)
                     {
-                        bobaObject.SetActive(false);
+                        audioManager.PlaySFX(audioManager.fail);
+                        hp.ReduceHP();
+                        npcAnimator.ResetTrigger("stopMoving");
+                        npcAnimator.SetTrigger("fail");
+                        currentState = State.MovingToExit;
 
+                        if (bobaObject != null)
+                        {
+                            bobaObject.SetActive(false);
+                        }
                     }
-
                 }
                 break;
+
 
             case State.MovingToExit:
            

@@ -4,26 +4,67 @@ using UnityEngine;
 
 public class HighlightTopping : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("Ingredient Settings")]
+    public int tutorialStepRequired = 0; // Which step this ingredient should be highlighted
+    public string normalSpritePath = "Sprites/Topping1";
+    public string highlightSpritePath = "Sprites/Topping1Highlight";
+
+    private SpriteRenderer sr;
+    private bool isHighlighted = false;
+
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        // Auto-highlight if this is the current tutorial step
+        if (TutorialManager.isTutorial && TutorialManager.currentTutorialStep == tutorialStepRequired)
+        {
+            if (!isHighlighted)
+            {
+                Highlight();
+            }
+        }
+        else
+        {
+            if (isHighlighted && TutorialManager.currentTutorialStep != tutorialStepRequired)
+            {
+                RemoveHighlight();
+            }
+        }
     }
-    void OnMouseEnter ()
-{
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.sprite = Resources.Load<Sprite>("Sprites/Topping1Highlight");
-}
 
-void OnMouseExit ()
+    void OnMouseEnter()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.sprite = Resources.Load<Sprite>("Sprites/Topping1");
-}
+        // Only allow hover highlight if it's this ingredient's turn or tutorial is off
+        if (!TutorialManager.isTutorial || TutorialManager.currentTutorialStep == tutorialStepRequired)
+        {
+            Highlight();
+        }
+    }
+
+    void OnMouseExit()
+    {
+        // Keep highlight during tutorial if it's the current step
+        if (TutorialManager.isTutorial && TutorialManager.currentTutorialStep == tutorialStepRequired)
+        {
+            return; // Don't remove highlight
+        }
+
+        RemoveHighlight();
+    }
+
+    void Highlight()
+    {
+        sr.sprite = Resources.Load<Sprite>(highlightSpritePath);
+        isHighlighted = true;
+    }
+
+    void RemoveHighlight()
+    {
+        sr.sprite = Resources.Load<Sprite>(normalSpritePath);
+        isHighlighted = false;
+    }
 }

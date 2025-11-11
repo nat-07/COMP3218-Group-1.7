@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Drag : MonoBehaviour
 {
     AudioManager audioManager;
@@ -12,13 +11,10 @@ public class Drag : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-
     void Start()
     {
         originalPosition = transform.position;
     }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -26,41 +22,33 @@ public class Drag : MonoBehaviour
         {
             // Move object, taking into account original offset
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            
+
         }
     }
-
-void OnMouseEnter ()
-{
+    void OnMouseEnter()
+    {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.material.color = Color.yellow;
-}
-
-void OnMouseExit ()
+    }
+    void OnMouseExit()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.material.color = Color.white;
-}
-
-
+    }
     private void OnMouseDown()
     {
-         audioManager.PlaySFX(audioManager.pickingUp);
+        audioManager.PlaySFX(audioManager.pickingUp);
         // Record the difference between objects centre, and the clicked point on the camera plane. 
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         dragging = true;
     }
-
     private void OnMouseUp()
     {
         //Stop Dragging 
-
         dragging = false;
-        
+
         //Object returns to same position ((idk if we want smooth transmission or not))
         transform.position = originalPosition;
-
     }
-        
 
 }
