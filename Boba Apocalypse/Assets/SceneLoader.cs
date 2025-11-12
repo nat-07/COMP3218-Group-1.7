@@ -41,6 +41,6 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
         blackOverlay.alpha = 1f;
-        SceneManager.LoadScene("Cutscene");
+        SceneManager.LoadScene("Cutscene 1");
     }
 }

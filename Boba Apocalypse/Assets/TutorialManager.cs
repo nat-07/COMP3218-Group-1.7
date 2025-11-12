@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using Unity.VisualScripting.Dependencies.Sqlite;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class TutorialManager : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     public GameObject tutorialBackground;
     public GameObject samIcon;
+
+    public GameObject[] hearts;
 
     [Header("Settings")]
     public float displayTime = 5f;
@@ -35,7 +38,7 @@ public class TutorialManager : MonoBehaviour
 
     public Sprite thirdStepCup;
 
-    private string[] tutorialMessages = new string[]
+    public string[] tutorialMessages = new string[]
     {
         "Hello, you're new here! My name is Sam!",
         "Let me help so you won't die hehe...",
@@ -62,7 +65,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator ShowMessages()
     {
         //TODO: Change this back
-        for (int i = 0; i < 0; i++)
+        for (int i = 0; i < tutorialMessages.Length; i++)
         {
 
             tutorialText.text = "";
@@ -160,7 +163,7 @@ public class TutorialManager : MonoBehaviour
         if (currentTutorialStep == 3)
         {
 
-            tutorialText.text = "When you're finished constructing, press the DOWN ARROW";
+            tutorialText.text = "When you're rady, press the DOWN KEY";
 
             moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
 
@@ -176,38 +179,31 @@ public class TutorialManager : MonoBehaviour
             tutorialText.gameObject.SetActive(true);
             if (tutorialBackground != null) tutorialBackground.SetActive(true);
             if (samIcon != null) samIcon.SetActive(true);
-            tutorialText.text = "Press Space to stop the arrow";
+            tutorialText.text = "Press Space to stop the arrow. This is the angle";
             AdvanceTutorialStep();
         }
         if (currentTutorialStep == 6)
         {
+            tutorialText.gameObject.SetActive(true);
+            if (tutorialBackground != null) tutorialBackground.SetActive(true);
+            if (samIcon != null) samIcon.SetActive(true);
             milkTea.GetComponent<DragTutorial>().makeActive();
             topping.GetComponent<DragTutorial>().makeActive();
             ice.GetComponent<DragTutorial>().makeActive();
-            moveManager.GetComponent<MoveDownKeyTutorial>().disableDownKey();
+            moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
             StartCoroutine(samYapsMore());
+
+            DirectionPointerTutorial.tutorialMode = false;
+            DirectionPointerTutorial.tutorialMode2 = true;
+        
             AdvanceTutorialStep();
 
             
         }
         if (currentTutorialStep == 7)
         {
-            DirectionPointerTutorial.tutorialMode = false;
-            DirectionPointerTutorial.tutorialMode2 = true;
-            if (bobaCup.GetComponent<SpriteRenderer>().sprite != thirdStepCup && Input.GetKey(KeyCode.DownArrow))
-            {
+         AdvanceTutorialStep();
 
-                tutorialText.gameObject.SetActive(true);
-                if (tutorialBackground != null) tutorialBackground.SetActive(true);
-                if (samIcon != null) samIcon.SetActive(true);
-                StartCoroutine(samYapsMore2());
-            }
-            if (bobaCup.GetComponent<SpriteRenderer>().sprite == thirdStepCup)
-            {
-                moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
-                AdvanceTutorialStep();
-
-            }
         }
 
         if (currentTutorialStep == 9)
@@ -233,7 +229,7 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator samYapsMore()
     {
-        tutorialText.text = "Nice! Now do this yourself.";
+        tutorialText.text = "Nice! Now do this one yourself.";
         yield return new WaitForSeconds(4);
         tutorialText.gameObject.SetActive(false);
         if (tutorialBackground != null) tutorialBackground.SetActive(false);
@@ -267,6 +263,18 @@ IEnumerator samYapsMore4()
     {
         tutorialText.text = "Good! You're all set.";
         yield return new WaitForSeconds(3);
+        tutorialText.text = "You only have 5 chances in this job";
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            Debug.Log("hearts");
+            hearts[i].SetActive(true);
+        }
+        yield return new WaitForSeconds(3);
+        tutorialText.text = "If you give the wrong order, or did not complete in time. You lose a life!";
+        yield return new WaitForSeconds(3);
+        tutorialText.text = "Good luck pal! Don't die!";
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("URP2DSceneTemplate");
         tutorialText.gameObject.SetActive(false);
         if (tutorialBackground != null) tutorialBackground.SetActive(false);
         if (samIcon != null) samIcon.SetActive(false);

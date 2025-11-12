@@ -16,11 +16,14 @@ public class CustomerScriptTutorial : MonoBehaviour
     public GameObject timerObject;
     public Timer timer;
     public bool gotBoba;
+    
     public int currentBobaItem; //id of the boba choice
     public Sprite[] bobaChoices;
     public TextMeshProUGUI tutorialText;
     public GameObject tutorialBackground;
     public GameObject samIcon;
+
+    public bool hasBobaBeenSet;
 
     private int customerNumber = 0;
 
@@ -40,9 +43,15 @@ public class CustomerScriptTutorial : MonoBehaviour
 
     void Start()
     {
+        hasBobaBeenSet = false;
         finalY = 0.25f;
         finalX = 0;
-        Debug.Log(finalX);
+        if (customerNumber > 0)
+        {
+            finalY = Random.Range(0.25f, 1f);
+            finalX = Random.Range(-6f, 8f);
+        }
+    
         transform.position = new Vector3(-10f, finalY, transform.position.z);
         transform.rotation = Quaternion.identity;
         currentState = State.MovingToCenter;
@@ -101,9 +110,10 @@ public class CustomerScriptTutorial : MonoBehaviour
 
             case State.Waiting:
                 rb.bodyType = RigidbodyType2D.Static;
-                if (waitTimer == 0f && !TutorialManager.isTutorial)
+                if (waitTimer == 0f && customerNumber > 0 && !hasBobaBeenSet)
                 {
                     setBobaItem();
+                    hasBobaBeenSet = true;
                 }
 
                 // Only count down timer if NOT in tutorial mode
@@ -137,8 +147,7 @@ public class CustomerScriptTutorial : MonoBehaviour
                 if (transform.position.x > 10f)
                 {
                     npcAnimator.ResetTrigger("fail");
-                    
-
+                   
                     Start();
                 }
                 break;
@@ -161,7 +170,16 @@ public class CustomerScriptTutorial : MonoBehaviour
                 {
                     npcAnimator.ResetTrigger("hitSuccess");
                     customerNumber += 1;
-                    Start();
+
+                    if (customerNumber == 3)
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                       
+                             Start();
+                    }
                 }
                 break;
         }
@@ -224,33 +242,8 @@ public class CustomerScriptTutorial : MonoBehaviour
 
         if (bobaObject != null)
         {
-            switch (ScoreSystem.currentUnlockedToppings)
-            {
-                case -1:
-                    nextBoba = (int)Random.Range(0, 4);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 0:
-                    nextBoba = (int)Random.Range(0, 6);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 1:
-                    nextBoba = (int)Random.Range(0, 8);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 2:
-                    nextBoba = (int)Random.Range(0, 10);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 3:
-                    nextBoba = (int)Random.Range(0, 12);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-                case 4:
-                    nextBoba = (int)Random.Range(0, 14);
-                    bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
-                    break;
-            }
+            nextBoba = (int)Random.Range(0, 4);
+             bobaObject.GetComponent<SpriteRenderer>().sprite = bobaChoices[nextBoba];
 
 
         }

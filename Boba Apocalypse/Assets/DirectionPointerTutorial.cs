@@ -51,24 +51,10 @@ public class DirectionPointerTutorial : MonoBehaviour
                 else
                 {
 
-                    tutorialText.text = "Great! Now control the speed. The lower the pointer, the slower it is!";
+                    StartCoroutine(samYapsMore2());
 
                 }
 
-            }
-            else if (tutorialMode2)
-            {
-
-                if (!(this.transform.position.x < 1.5 && this.transform.position.x > -1.5))
-                {
-
-                    tutorialText.gameObject.SetActive(true);
-                    if (tutorialBackground != null) tutorialBackground.SetActive(true);
-                    if (samIcon != null) samIcon.SetActive(true);
-                    StartCoroutine(samYapsMore());
-                    moving = true;
-
-                }
             }
             
         }
@@ -87,8 +73,19 @@ public class DirectionPointerTutorial : MonoBehaviour
         }
 
     IEnumerator samYapsMore()
+        {
+            tutorialText.text = "This is the wrong angle!!";
+            yield return new WaitForSeconds(4);
+            tutorialText.gameObject.SetActive(false);
+            if (tutorialBackground != null) tutorialBackground.SetActive(false);
+            if (samIcon != null) samIcon.SetActive(false);
+
+
+        }
+    
+     IEnumerator samYapsMore2()
     {
-        tutorialText.text = "This is the wrong angle!!";
+        tutorialText.text = "Press space to set the speed. The lower the pointer, the slower it is!";
         yield return new WaitForSeconds(4);
         tutorialText.gameObject.SetActive(false);
         if (tutorialBackground != null) tutorialBackground.SetActive(false);

@@ -11,6 +11,10 @@ public class BobaMovementTutorial : MonoBehaviour
     AudioManager audioManager;
     public GameObject[] objectsToTrack;
     public GameObject BobaCup;
+
+ 
+
+    public GameObject BobaOrder;
     public GameObject[] otherObjectsToTrack;// assign in Inspector
     public GameObject[] stuffToAppear;
     private Vector3[] initialPositions;
@@ -136,7 +140,7 @@ public class BobaMovementTutorial : MonoBehaviour
             BoxCollider2D bc = GetComponent<BoxCollider2D>();
             bc.isTrigger = true;
         }
-         PressurePointerTutorial.finalStop = false;
+            PressurePointerTutorial.finalStop = false;
             PressurePointerTutorial.moving = false;
             DirectionPointerTutorial.moving = true;
     
