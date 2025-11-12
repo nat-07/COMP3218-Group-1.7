@@ -319,7 +319,7 @@ SpriteRenderer:
   m_SortingLayerID: -293007833
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d068eb0c97ba40dab02919ace040b1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5993e0248a71f804e8c88af84dd7e924, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 329635019}
-  moveSpeed: 2
+  moveSpeed: 5
   waitTime: 20
   bobaObject: {fileID: 1535463546}
   timerObject: {fileID: 416210198}
@@ -960,7 +960,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2902575b740564e16a62107c28e1a268, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2460b043bdd1fa54e9513c22f319de7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -980,7 +980,7 @@ Transform:
   m_GameObject: {fileID: 329635011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.57, z: 0}
+  m_LocalPosition: {x: 0.59, y: 0.77, z: 0}
   m_LocalScale: {x: 3.861592, y: 4.0497427, z: -0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -998,7 +998,7 @@ Animator:
   m_GameObject: {fileID: 329635011}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3a9d17cdecb94eaa9a66620b94dc57d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1b26f56375896cc419f4a6dccf83cb30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1368,7 +1368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1039, y: 4.5436}
+  m_AnchoredPosition: {x: -0.48, y: 4.5365}
   m_SizeDelta: {x: 1.6077, y: 0.4576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485775708
@@ -1418,13 +1418,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.4
-  m_fontSizeBase: 0.4
+  m_fontSize: 0.6
+  m_fontSizeBase: 0.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -1.7986591, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 667810093}
-  moveSpeed: 2
+  moveSpeed: 5
   waitTime: 20
   bobaObject: {fileID: 1888418201}
   timerObject: {fileID: 200325139}
@@ -2017,7 +2017,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2902575b740564e16a62107c28e1a268, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2460b043bdd1fa54e9513c22f319de7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2037,7 +2037,7 @@ Transform:
   m_GameObject: {fileID: 667810085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.57, z: 0}
+  m_LocalPosition: {x: -1.4, y: 0.99, z: 0}
   m_LocalScale: {x: 3.861592, y: 4.0497427, z: -0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2055,7 +2055,7 @@ Animator:
   m_GameObject: {fileID: 667810085}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3a9d17cdecb94eaa9a66620b94dc57d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1b26f56375896cc419f4a6dccf83cb30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2798,7 +2798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 943858308}
-  moveSpeed: 2
+  moveSpeed: 5
   waitTime: 20
   bobaObject: {fileID: 1880145736}
   timerObject: {fileID: 2002113034}
@@ -2863,7 +2863,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2902575b740564e16a62107c28e1a268, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 777f46f2428379b4b980480669cd1dda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2901,7 +2901,7 @@ Animator:
   m_GameObject: {fileID: 943858300}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3a9d17cdecb94eaa9a66620b94dc57d, type: 2}
+  m_Controller: {fileID: 9100000, guid: ebcd412cc778e5d44a91c833ad84e130, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4075,7 +4075,6 @@ MonoBehaviour:
   - {fileID: 1607364604}
   distance: 2
   duration: 1
-  isTableDown: 0
 --- !u!4 &1231730967
 Transform:
   m_ObjectHideFlags: 0
@@ -5907,7 +5906,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.9712733, b: 0, a: 1}
   m_FlipX: 0
@@ -5992,6 +5991,8 @@ MonoBehaviour:
   - {fileID: 667810085}
   - {fileID: 1723565061}
   - {fileID: 329635011}
+  PressurePointer: {fileID: 1607364605}
+  DirectionPointer: {fileID: 986428103}
 --- !u!1 &1712636307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1723565069}
-  moveSpeed: 2
+  moveSpeed: 5
   waitTime: 20
   bobaObject: {fileID: 493673761}
   timerObject: {fileID: 1822119496}
@@ -6314,7 +6315,7 @@ Transform:
   m_GameObject: {fileID: 1723565061}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.57, z: 0}
+  m_LocalPosition: {x: -5.65, y: 0.72, z: 0}
   m_LocalScale: {x: 3.861592, y: 4.0497427, z: -0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6332,7 +6333,7 @@ Animator:
   m_GameObject: {fileID: 1723565061}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3a9d17cdecb94eaa9a66620b94dc57d, type: 2}
+  m_Controller: {fileID: 9100000, guid: ebcd412cc778e5d44a91c833ad84e130, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7031,7 +7032,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e63d1be775bfb4abba75c13001f05ac5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5805174b505ae8243a0e89ddf57f9b67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7095,6 +7096,7 @@ MonoBehaviour:
   throwBoba: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
   success: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
   fail: {fileID: 8300000, guid: 5039414d94a6e4e70a5ab9e8833e992a, type: 3}
+  levelUp: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
 --- !u!4 &1972140774
 Transform:
   m_ObjectHideFlags: 0
@@ -7148,7 +7150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 1995368374}
-  moveSpeed: 2
+  moveSpeed: 5
   waitTime: 20
   bobaObject: {fileID: 854772602}
   timerObject: {fileID: 1844100077}
@@ -7233,7 +7235,7 @@ Transform:
   m_GameObject: {fileID: 1995368365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.78, y: 0.34, z: 0}
+  m_LocalPosition: {x: 2.13, y: 1.18, z: 0}
   m_LocalScale: {x: 3.861592, y: 4.0497427, z: -0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7738,7 +7740,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2230f93cb9c3b4136bbf63e77ce171df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

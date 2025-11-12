@@ -902,6 +902,12 @@ MonoBehaviour:
   firstStepCup: {fileID: 21300000, guid: c4e9356fb0d2b4578b655f5d31caf21a, type: 3}
   secondStepCup: {fileID: 21300000, guid: b0da9a4c4b1b14a9298098656f3284b8, type: 3}
   thirdStepCup: {fileID: 21300000, guid: ab804da10168d4869b5b03d4aea0a5fc, type: 3}
+  tutorialMessages:
+  - Hello, you're new here! My name is Sam!
+  - Let me help so you won't die hehe...
+  - Make the Boba for the alien so they take mercy on you!
+  - Match the ingredients to make the correct boba tea!
+  - Let's try making one together!
 --- !u!1 &515320848
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +951,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  PressurePointer: {fileID: 0}
+  DirectionPointer: {fileID: 0}
 --- !u!4 &515320850
 Transform:
   m_ObjectHideFlags: 0
@@ -2198,7 +2206,7 @@ SpriteRenderer:
   m_SortingLayerID: -293007833
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d068eb0c97ba40dab02919ace040b1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5993e0248a71f804e8c88af84dd7e924, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3780,7 +3788,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e63d1be775bfb4abba75c13001f05ac5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5805174b505ae8243a0e89ddf57f9b67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

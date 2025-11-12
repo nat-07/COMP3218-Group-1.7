@@ -60,4 +60,9 @@ public class PressurePointer : MonoBehaviour
             this.transform.Translate(0, pressureSpeed * Time.deltaTime, 0);
         }
     }
+
+    public void changePressureSpeed(int newSpeed)
+    {
+        pressureSpeed = newSpeed;
+    }
 }

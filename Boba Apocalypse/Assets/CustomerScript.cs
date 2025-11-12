@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class CustomerScript : MonoBehaviour
 {
 
     AudioManager audioManager;
     public Animator npcAnimator;
-    public float moveSpeed = 2f;
+    public float moveSpeed = 5f;
     public float waitTime = 20f;
     public GameObject bobaObject;
     public GameObject timerObject;
@@ -30,6 +31,7 @@ public class CustomerScript : MonoBehaviour
     private Rigidbody2D rb;
     private bool alienWaiting;
     private bool alienPaused = false;
+   
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class CustomerScript : MonoBehaviour
             Debug.Log("Only 1 Alien with New Topping");
             StartCoroutine(OnlyRunAlienWithNewTopping());
         }
+       
         finalY = Random.Range(0.25f, 1f);
         finalX = Random.Range(-6f, 8f);
         transform.position = new Vector3(-10f, finalY, transform.position.z);
@@ -70,6 +73,10 @@ public class CustomerScript : MonoBehaviour
         {
             case State.MovingToCenter:
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                if (transform.position.x > 3f)
+                {
+                    rb.bodyType = RigidbodyType2D.Dynamic;
+                }
                 if (transform.position.x >= finalX)
                 {
                     npcAnimator.SetTrigger("stopMoving");
@@ -88,13 +95,13 @@ public class CustomerScript : MonoBehaviour
                         if (scoreSystem.getBeginningLevel() || scoreSystem.getLevel() == 1 || scoreSystem.getLevel() == 2)
                         {
                             waitTime = 30f;
-                        }else if (scoreSystem.getLevel() > 5)
+                        }else if (scoreSystem.getLevel() <= 5 && scoreSystem.getLevel() >= 3)
                         {
-                            waitTime = Random.Range(13f, 20f);
+                            waitTime = Random.Range(13f, 18f);
                         }
                         else
                         {
-                            waitTime = Random.Range(20f, 25f);
+                            waitTime = Random.Range(10f, 13f);
                         }
                         timer.remainingTime = waitTime;
                     }
@@ -196,7 +203,7 @@ public class CustomerScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("alien") && currentState == State.MovingToCenter && this.transform.position.x > -7.32)
+        if (collision.gameObject.CompareTag("alien") && currentState == State.MovingToCenter && this.transform.position.x >= -7.32)
         {
             npcAnimator.SetTrigger("stopMoving");
             currentState = State.Waiting;
@@ -213,6 +220,11 @@ public class CustomerScript : MonoBehaviour
                 waitTime = 20f;
                 timer.remainingTime = waitTime;
             }
+        }
+        else if (collision.gameObject.CompareTag("alien") && currentState == State.MovingToCenter && this.transform.position.x < -7.32)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            finalX = Random.Range(0f, 7f);
         }
         // Check if we collided with an object tagged "Square"
         if (collision.gameObject.CompareTag("Square") && currentState == State.Waiting)
@@ -323,12 +335,10 @@ public class CustomerScript : MonoBehaviour
 
     IEnumerator OnlyRunAlienWithNewTopping()
     {
-        gameObject.SetActive(false);
         alienPaused = true;
         yield return new WaitForSeconds(35);
         Debug.Log("Alien Finish Waiting");
         alienPaused = false;
-        gameObject.SetActive(true);
         Start();
 
     }

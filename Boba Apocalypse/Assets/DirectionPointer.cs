@@ -37,4 +37,9 @@ public class DirectionPointer : MonoBehaviour
             this.transform.RotateAround(rotateAround.position, Vector3.forward, rotationSpeed * Time.deltaTime);
         }
     }
+
+    public void changerotationSpeed(int newSpeed)
+    {
+        rotationSpeed = newSpeed;
+    }
 }

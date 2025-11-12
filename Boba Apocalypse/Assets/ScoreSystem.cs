@@ -12,6 +12,8 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField] public TextMeshProUGUI Level;
     [SerializeField] public GameObject[] toppings;
     [SerializeField] public GameObject[] Customers;
+    [SerializeField] public PressurePointer PressurePointer;
+    [SerializeField] public DirectionPointer DirectionPointer;
     // Start is called before the first frame update
     private static int score;
     private int level;
@@ -58,12 +60,32 @@ public class ScoreSystem : MonoBehaviour
                 beginningOfLevel = true;
             }
             StartCoroutine(Flash());
+            if (level == 4)
+            {
+                PressurePointer.changePressureSpeed(15);
+            }else if ( level == 8)
+            {
+                PressurePointer.changePressureSpeed(20);
+            }
+            if (level == 4)
+            {
+                DirectionPointer.changerotationSpeed(60);
+            }
+            else if (level == 6)
+            {
+                DirectionPointer.changerotationSpeed(70);
+            }else if (level == 8)
+            {
+                DirectionPointer.changerotationSpeed(80);
+            }
+
 
         }
         IEnumerator Flash()
             {
                 Color yellow = Color.yellow;
                 Color white = Color.white;
+                Level.fontSize = 1f;
 
                 float duration = 2f; 
                 float half = duration / 2f;

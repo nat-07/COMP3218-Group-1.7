@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: idle
+    m_Hash: 472167701
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alien2Idle1
+      m_Hash: 609512691
+      m_Sprite: {fileID: 21300000, guid: 777f46f2428379b4b980480669cd1dda, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 777f46f2428379b4b980480669cd1dda, type: 3}
+    - m_Name: Alien2Idle2
+      m_Hash: 1029520713
+      m_Sprite: {fileID: 21300000, guid: 8e4fd64b7c70c9b4288de64214c87b58, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 8e4fd64b7c70c9b4288de64214c87b58, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Entering
+    m_Hash: 808434136
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alien2Enter1
+      m_Hash: 340239121
+      m_Sprite: {fileID: 21300000, guid: 280b65f49fe280346af29cdb46a8cbe1, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 280b65f49fe280346af29cdb46a8cbe1, type: 3}
+    - m_Name: Alien2Enter2
+      m_Hash: 223277739
+      m_Sprite: {fileID: 21300000, guid: d65d5a7985be05248884e8fe6778968e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: d65d5a7985be05248884e8fe6778968e, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Success
+    m_Hash: 549316142
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alien2Success1
+      m_Hash: 945634406
+      m_Sprite: {fileID: 21300000, guid: e28c1bc9e6ac97640acc347b515508f9, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: e28c1bc9e6ac97640acc347b515508f9, type: 3}
+    - m_Name: Alien2Success2
+      m_Hash: 559181276
+      m_Sprite: {fileID: 21300000, guid: becf4163a9505f94185d4557bcbfe376, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: becf4163a9505f94185d4557bcbfe376, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Fail
+    m_Hash: 638944375
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Alien2Fail1
+      m_Hash: 114520754
+      m_Sprite: {fileID: 21300000, guid: 57efd08ccdfba354c98b39b8cebceccd, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 57efd08ccdfba354c98b39b8cebceccd, type: 3}
+    - m_Name: Alien2Fail2
+      m_Hash: 534389512
+      m_Sprite: {fileID: 21300000, guid: d318907a56b50464eb4009412e1a1c79, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: d318907a56b50464eb4009412e1a1c79, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638985709457437214
+  m_Version: 1

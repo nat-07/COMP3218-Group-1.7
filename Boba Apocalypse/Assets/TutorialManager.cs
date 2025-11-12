@@ -162,7 +162,7 @@ public class TutorialManager : MonoBehaviour
         if (currentTutorialStep == 3)
         {
 
-            tutorialText.text = "When you're rady, press the DOWN KEY";
+            tutorialText.text = "When you're ready, press the DOWN KEY";
 
             moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
 
