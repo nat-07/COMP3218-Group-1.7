@@ -221,7 +221,12 @@ public class TutorialManager : MonoBehaviour
         }
         if (currentTutorialStep == 11)
         {
-            
+            DirectionPointerTutorial.tutorialMode2 = false;
+            tutorialText.gameObject.SetActive(true);
+            if (tutorialBackground != null) tutorialBackground.SetActive(true);
+            if (samIcon != null) samIcon.SetActive(true);
+            StartCoroutine(samYapsMore4());
+            AdvanceTutorialStep();
         }
         
 

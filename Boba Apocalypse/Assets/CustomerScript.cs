@@ -85,7 +85,7 @@ public class CustomerScript : MonoBehaviour
                     {
                         timerObject.SetActive(true);
                         waitTime = 20f;
-                        if (scoreSystem.getBeginningLevel())
+                        if (scoreSystem.getBeginningLevel() || scoreSystem.getLevel() == 1 || scoreSystem.getLevel() == 2)
                         {
                             waitTime = 30f;
                         }

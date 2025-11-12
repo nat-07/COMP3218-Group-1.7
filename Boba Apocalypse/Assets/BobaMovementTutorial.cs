@@ -129,8 +129,10 @@ public class BobaMovementTutorial : MonoBehaviour
             PressurePointerTutorial.finalStop = false;
             PressurePointerTutorial.moving = false;
             DirectionPointerTutorial.moving = true;
-
-            TutorialManager.AdvanceTutorialStep();
+            if (collision.gameObject.transform.Find("Boba").GetComponent<SpriteRenderer>().sprite == gameObject.GetComponent<SpriteRenderer>().sprite)
+            {
+                TutorialManager.AdvanceTutorialStep();
+            }
             BoxCollider2D bc = GetComponent<BoxCollider2D>();
             bc.isTrigger = true;
         }
