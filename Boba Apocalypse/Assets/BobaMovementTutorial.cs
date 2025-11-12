@@ -103,6 +103,7 @@ public class BobaMovementTutorial : MonoBehaviour
         if (tutorialBackground != null) tutorialBackground.SetActive(false);
         if (samIcon != null) samIcon.SetActive(false);
         transform.position = iniPos;
+        transform.rotation = iniRot;
         MoveTableUpTween();
         MoveTableDownTween();
         yield return new WaitForSeconds(1);
@@ -133,6 +134,9 @@ public class BobaMovementTutorial : MonoBehaviour
             BoxCollider2D bc = GetComponent<BoxCollider2D>();
             bc.isTrigger = true;
         }
+         PressurePointerTutorial.finalStop = false;
+            PressurePointerTutorial.moving = false;
+            DirectionPointerTutorial.moving = true;
     
     
 }

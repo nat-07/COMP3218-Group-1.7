@@ -262,7 +262,7 @@ public class CustomerScriptTutorial : MonoBehaviour
 
         tutorialText.text = "You didn't complete the order in time. The alien will storm off.";
         yield return new WaitForSeconds(3);
-        tutorialText.text = "Try this next Alien";
+        tutorialText.text = "Don't worry, try this next Alien";
         yield return new WaitForSeconds(3);
         tutorialText.gameObject.SetActive(false);
         if (tutorialBackground != null) tutorialBackground.SetActive(false);

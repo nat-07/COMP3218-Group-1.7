@@ -160,7 +160,7 @@ public class TutorialManager : MonoBehaviour
         if (currentTutorialStep == 3)
         {
 
-            tutorialText.text = "Now, press the DOWN ARROW";
+            tutorialText.text = "When you're finished constructing, press the DOWN ARROW";
 
             moveManager.GetComponent<MoveDownKeyTutorial>().enableDownKey();
 
@@ -176,7 +176,7 @@ public class TutorialManager : MonoBehaviour
             tutorialText.gameObject.SetActive(true);
             if (tutorialBackground != null) tutorialBackground.SetActive(true);
             if (samIcon != null) samIcon.SetActive(true);
-            tutorialText.text = "We must aim the boba properly to the customer";
+            tutorialText.text = "Press Space to stop the arrow";
             AdvanceTutorialStep();
         }
         if (currentTutorialStep == 6)
@@ -219,6 +219,10 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(samYapsMore3());
             AdvanceTutorialStep();
         }
+        if (currentTutorialStep == 11)
+        {
+            
+        }
         
 
     }
@@ -243,16 +247,26 @@ public class TutorialManager : MonoBehaviour
         if (samIcon != null) samIcon.SetActive(false);
 
     }
- IEnumerator samYapsMore3()
-{
+    IEnumerator samYapsMore3()
+    {
 
         tutorialText.text = "This next alien is impatient. Be quick!";
         yield return new WaitForSeconds(3);
-     
+
         tutorialText.gameObject.SetActive(false);
         if (tutorialBackground != null) tutorialBackground.SetActive(false);
         if (samIcon != null) samIcon.SetActive(false);
-    
-}
+
+    }
+IEnumerator samYapsMore4()
+    {
+        tutorialText.text = "Good! You're all set.";
+        yield return new WaitForSeconds(3);
+        tutorialText.gameObject.SetActive(false);
+        if (tutorialBackground != null) tutorialBackground.SetActive(false);
+        if (samIcon != null) samIcon.SetActive(false);
+ 
+
+    }
 }
 
