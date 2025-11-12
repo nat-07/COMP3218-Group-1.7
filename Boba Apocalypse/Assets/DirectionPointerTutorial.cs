@@ -1,0 +1,107 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using Unity.Collections;
+using UnityEngine;
+using TMPro;
+
+public class DirectionPointerTutorial : MonoBehaviour
+{
+    [SerializeField] public float rotationSpeed = -30f;
+    [SerializeField] public GameObject bobaCupThrow;
+    [SerializeField] private Transform rotateAround;
+
+    public TextMeshProUGUI tutorialText;
+    public GameObject tutorialBackground;
+    public GameObject samIcon;
+
+    public static Boolean moving;
+    public static bool tutorialMode = true;
+
+    public static bool tutorialMode2 = false;
+
+
+
+    private void Start()
+    {
+        moving = true;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        this.GetComponent<SpriteRenderer>().sprite = bobaCupThrow.GetComponent<SpriteRenderer>().sprite;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            moving = false;
+
+            if (tutorialMode)
+            {
+
+                if (!(this.transform.position.x < 1.5 && this.transform.position.x > -1.5))
+                {
+
+
+                    tutorialText.text = "Not Quite right, try again!";
+                    moving = true;
+
+                }
+                else
+                {
+
+                    tutorialText.text = "Great! Now control the speed. The lower the pointer, the slower it is!";
+
+                }
+
+            }
+            else if (tutorialMode2)
+            {
+
+                if (!(this.transform.position.x < 1.5 && this.transform.position.x > -1.5))
+                {
+
+                    tutorialText.gameObject.SetActive(true);
+                    if (tutorialBackground != null) tutorialBackground.SetActive(true);
+                    if (samIcon != null) samIcon.SetActive(true);
+                    StartCoroutine(samYapsMore());
+                    moving = true;
+
+                }
+            }
+            
+        }
+
+        if (this.transform.position.x > 6.45 || this.transform.position.x < -6.45)
+        {
+            Debug.Log(transform.position.x);
+            rotationSpeed = -rotationSpeed;
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, -6.45f, 6.45f);
+            transform.position = pos;
+        }
+        if (moving)
+        {
+            this.transform.RotateAround(rotateAround.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
+
+    IEnumerator samYapsMore()
+    {
+        tutorialText.text = "This is the wrong angle!!";
+        yield return new WaitForSeconds(4);
+        tutorialText.gameObject.SetActive(false);
+        if (tutorialBackground != null) tutorialBackground.SetActive(false);
+        if (samIcon != null) samIcon.SetActive(false);
+ 
+
+    }
+
+    }
+    public void partTwo()
+    {
+        tutorialMode = false;
+        tutorialMode2 = true;
+    }
+   
+}

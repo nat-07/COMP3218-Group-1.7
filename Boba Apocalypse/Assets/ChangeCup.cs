@@ -48,9 +48,10 @@ public class ChangeCup : MonoBehaviour
         topping3 = false;
         topping4 = false;
         topping5 = false;
-        topping6 = false; 
-        
+        topping6 = false;
+
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Debug.Log("bOBA RESET");
         sr.sprite = Resources.Load<Sprite>("Sprites/BobaCupSprite1");
     }
     
