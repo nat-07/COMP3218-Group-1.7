@@ -15,6 +15,7 @@ public class ScoreSystem : MonoBehaviour
     // Start is called before the first frame update
     private static int score;
     private int level;
+    private bool addingCustomer;
     public static int currentUnlockedToppings;
     private int currentUnlockedCustomers;
     private int[] levelsToUnlockToppings = { 2, 4, 6, 8, 10 };
@@ -31,6 +32,7 @@ public class ScoreSystem : MonoBehaviour
         score = 0;
         level = 1;
         ScoreVar.text = score.ToString();
+        addingCustomer = false;
         for (int i = 0; i < toppings.Length; i++)
         {
             toppings[i].SetActive(false);
@@ -94,7 +96,7 @@ public class ScoreSystem : MonoBehaviour
             }
             toppings[currentUnlockedToppings].SetActive(true);
         }
-        if (levelsToAddCustomer.Contains(level))
+        if (levelsToAddCustomer.Contains(level) && !addingCustomer)
         {
             for (int i = 0; i <= levelsToAddCustomer.Length; i++)
             {
@@ -105,22 +107,36 @@ public class ScoreSystem : MonoBehaviour
                 }
             }
             StartCoroutine(AddNewCustomer());
-            Customers[currentUnlockedCustomers].SetActive(true);
         }
     }
 
     public void AddScore()
     {
+        if (level == 1 || level == 2)
+        {
             score += 10;
-            ScoreVar.text = score.ToString();
-            CustomerScript.gotBoba = false;
+        } else if (level == 3 || level == 4)
+        {
+            score += 20;
+        } else if (level == 5 ||  level == 6 || level == 7)
+        {
+            score += 30;
+        } else
+        {
+            score += 40;
+        }
+
+        ScoreVar.text = score.ToString();
+        CustomerScript.gotBoba = false;
 
     }
     
     IEnumerator AddNewCustomer()
     {
+        addingCustomer = true;
         yield return new WaitForSeconds(7);
         Customers[currentUnlockedCustomers].SetActive(true);
+        addingCustomer = false;
     }
 
     public int getScore()

@@ -29,7 +29,7 @@ public class CustomerScript : MonoBehaviour
     private int nextBoba;
     private Rigidbody2D rb;
     private bool alienWaiting;
-    private bool alienPaused;
+    private bool alienPaused = false;
 
     private void Awake()
     {
@@ -84,10 +84,17 @@ public class CustomerScript : MonoBehaviour
                     if (timerObject != null)
                     {
                         timerObject.SetActive(true);
-                        waitTime = 20f;
+
                         if (scoreSystem.getBeginningLevel() || scoreSystem.getLevel() == 1 || scoreSystem.getLevel() == 2)
                         {
                             waitTime = 30f;
+                        }else if (scoreSystem.getLevel() > 5)
+                        {
+                            waitTime = Random.Range(13f, 20f);
+                        }
+                        else
+                        {
+                            waitTime = Random.Range(20f, 25f);
                         }
                         timer.remainingTime = waitTime;
                     }
@@ -120,7 +127,14 @@ public class CustomerScript : MonoBehaviour
                 break;
 
             case State.MovingToExit:
-           
+                if (bobaObject != null)
+                {
+                    bobaObject.SetActive(false);
+                }
+                if (timerObject != null)
+                {
+                    timerObject.SetActive(false);
+                }
                 transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
 
                 if (transform.position.x > 10f && !alienWaiting)
@@ -311,7 +325,8 @@ public class CustomerScript : MonoBehaviour
     {
         gameObject.SetActive(false);
         alienPaused = true;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(35);
+        Debug.Log("Alien Finish Waiting");
         alienPaused = false;
         gameObject.SetActive(true);
         Start();

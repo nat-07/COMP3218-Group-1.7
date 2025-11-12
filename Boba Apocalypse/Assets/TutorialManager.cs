@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour

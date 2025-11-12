@@ -56,13 +56,16 @@ public class BobaMovement : MonoBehaviour
             directionPointerX = directionPointer.position.x;
             directionPointerY = directionPointer.position.y;
             pressureSpeed = (pressurePointer.position.y + 4.22f) / 8.44f;
+            if (pressureSpeed == 0)
+            {
+                pressureSpeed = 0.01f;
+            }
             float finalX = 0;
             BoxCollider2D bc = GetComponent<BoxCollider2D>();
             bc.isTrigger = false;
 
             if (directionPointerX < 0)
             {
-                Debug.Log($"Direction is: {directionPointerX}");
                 finalX = directionPointerX - Math.Abs(directionPointerY * (Time.deltaTime * pressureSpeed)) * (float)Math.Tan(0.5);
             }
             else
